@@ -1,2 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+do_data.R
+data/consumerpriceinflationdetailedreferencetables_tcm77-331413-1.xls
+data/cpiinternet.xls
+data/102ipsmarginsoferror19752012_tcm77-340939.xls
+data/ips.csv
