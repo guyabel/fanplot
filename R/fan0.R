@@ -4,7 +4,7 @@ fan0 <-
            start = 1, frequency = 1, anchor = NULL, anchor.time=NULL,
            fan.col = heat.colors, alpha = if (style == "spaghetti") 0.5 else 1, 
            n.fan = NULL,
-           ln = if(length(probs)<10) probs else probs[round(probs,5) %in% round(seq(0.1, 0.9, 0.1),5)],
+           ln = NULL,
            med.ln = if(type=="interval") TRUE else FALSE, 
            ln.col = if(style=="spaghetti") "gray" else NULL, med.col= "orange",
            rlab = ln, rpos = 4, roffset = 0.1, rcex = 0.8, rcol = NULL, 
@@ -12,7 +12,9 @@ fan0 <-
            upplab = "U", lowlab = "L", medlab=if(type == "interval") "M" else NULL,
            n.spag = 30, 
            space = if(style=="boxplot") 1/frequency else 0.9/frequency, 
-           add = TRUE, xlim = c(0,1), ylim = range(data),...){
+           add = TRUE, ylim = range(data)*0.8,...){
+    if(add==TRUE)
+      plot(data[,1], type="n", ylim=ylim, ...)
     fan(data = data, data.type=data.type, style = style, type = type,
     probs = probs, 
     start = start, frequency = frequency, anchor = anchor, anchor.time=anchor.time,
@@ -26,6 +28,6 @@ fan0 <-
     upplab = upplab, lowlab = lowlab, medlab=medlab,
     n.spag = n.spag, 
     space = space, 
-    add = TRUE, xlim = c(0,1), ylim = range(data))
+    add = FALSE)
   }
     

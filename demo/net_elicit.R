@@ -6,8 +6,10 @@ library("fanplot")
 ##
 ##install packages if not already done so (uncomment)
 ##
-# install.packages("shiny")
-library("shiny")
+if (!(require("shiny"))) {
+  install.packages("shiny")
+  library("shiny")
+}
 
 ##
 ##run shiny app

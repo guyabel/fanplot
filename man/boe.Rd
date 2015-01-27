@@ -13,7 +13,7 @@ Numerical parameters for inflation report of the Bank of England used to specify
   \describe{
     \item{\code{time0}}{Publication time of parameters}
     \item{\code{time}}{Future time of projected parameter}
-    \item{\code{mode}}{mode parameter of split-normal distribution}
+    \item{\code{mode}}{Central location parameter of split-normal distribution}
     \item{\code{uncertainty}}{Uncertainty parameter of split-normal distribution}
     \item{\code{skew}}{Skew parameter of split-normal distribution}
   }
