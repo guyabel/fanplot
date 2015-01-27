@@ -116,12 +116,3 @@ ips<-read.csv("./data/ips.csv")
 head(ips)
 plot(ts(ips$net, 1975))
 save(ips, file = "./data/ips.RData")
-
-
-##
-##Compress
-##
-tools::checkRdaFiles("./data")
-tools::resaveRdaFiles("./data")
-
-

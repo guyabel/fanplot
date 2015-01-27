@@ -8,27 +8,20 @@ shinyUI(pageWithSidebar(
   sidebarPanel(
     radioButtons("cp", h5("Number of Future Change Points:"),
                        c("0" = 0, "1" = 1, "2" = 2,  "3" = 3), selected=0),
-#     numericInput("cp", "Number of Future Change Points:", 0, min=0, max=3),
-#     sliderInput("cp",
-#                 "Number of Future Change Points:",
-#                 min = 0,
-#                 max = 3,
-#                 value = 0, 
-#                 step = 1),
     uiOutput("year1"),
-    uiOutput("mean1"),
+    uiOutput("mode1"),
     uiOutput("sd1"),
     uiOutput("skew1"),
     uiOutput("year2"),
-    uiOutput("mean2"),
+    uiOutput("mode2"),
     uiOutput("sd2"),
     uiOutput("skew2"),
     uiOutput("year3"),
-    uiOutput("mean3"),
+    uiOutput("mode3"),
     uiOutput("sd3"),
     uiOutput("skew3"),
     h5("End Values:"),
-    sliderInput("mean0",
+    sliderInput("mode0",
                 paste0("2030: Central Prediction"),
                 min = -1000,
                 max = 1000,
@@ -48,7 +41,7 @@ shinyUI(pageWithSidebar(
                 step=0.01),
     br(),
     helpText("Download Data:"),
-    downloadButton('downloaddf', 'Data')
+    downloadButton('downloadData', 'Data')
   ),
   # Show a plot of the generated distribution
   mainPanel(
@@ -64,11 +57,3 @@ shinyUI(pageWithSidebar(
   )
 ))
 
-#     checkboxInput("showfan", "Interpolate Fan", FALSE),
-#     helpText("Tweak the width of the fan in the base year:"),
-#     sliderInput("uncert10",
-#                 "Uncertainty in First Period:",
-#                 min = 0,
-#                 max = 0.25,
-#                 value = 0.1,
-#                 step= 0.001)
