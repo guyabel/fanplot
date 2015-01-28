@@ -1,6 +1,6 @@
 Package: fanplot
 Type: Package
-Title: Visualisation of sequential probability distributions using fan charts.
+Title: Visualisation of Sequential Probability Distributions Using Fan Charts
 Version: 3.4.0
 Author: Guy J. Abel
 Maintainer: "Guy J. Abel" <g.j.abel@gmail.com>
