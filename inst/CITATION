@@ -1,0 +1,18 @@
+citHeader("To cite fanplot in publications use:")
+
+citEntry(entry = "Article",
+  title        = "{fanplot}: An R Package for Visualising Sequential Distributions",
+  author       = personList(as.person("Guy J. Abel")),
+  journal      = "The R Journal",
+  year         = "2015",
+  volume       = "7",
+  number       = "2",
+  pages        = "15--23",
+  url          = "http://journal.r-project.org/archive/2015-1/abel.pdf",
+
+  textVersion  =
+  paste("Abel, Guy J. (2015).",
+        "fanplot: An R Package for Visualising Sequential Distributions",
+        "The R Journal, 7(1), 15-23.",
+        "URL http://journal.r-project.org/archive/2015-1/abel.pdf.")
+)
