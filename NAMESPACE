@@ -1,1 +1,6 @@
 exportPattern("^[[:alpha:]]+")
+importFrom("grDevices", "adjustcolor", "heat.colors")
+importFrom("graphics", "box", "boxplot", "lines", "plot", "polygon", "rect", "text")
+importFrom("stats", "lag", "median", "pnorm", "qnorm", "quantile", "runif", "time", "ts")
+
+
