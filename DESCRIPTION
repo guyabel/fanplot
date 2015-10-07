@@ -18,6 +18,4 @@ Depends:
 Suggests: 
     shiny,
     tsbugs,
-    knitr
 LazyData: true
-VignetteBuilder: knitr

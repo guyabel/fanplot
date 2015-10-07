@@ -6,8 +6,9 @@ fan <-
            n.fan = NULL,
            ln = if(length(probs)<10) probs else 
              probs[round(probs,2) %in% round(seq(0.1, 0.9, 0.1),2)],
+           ln.col = if(style=="spaghetti") "gray" else NULL, 
            med.ln = if(type=="interval") TRUE else FALSE, 
-           ln.col = if(style=="spaghetti") "gray" else NULL, med.col= "orange",
+           med.col= "orange",
            rlab = ln, rpos = 4, roffset = 0.1, rcex = 0.8, rcol = NULL, 
            llab = FALSE, lpos = 2, loffset = roffset, lcex = rcex, lcol = rcol, 
            upplab = "U", lowlab = "L", medlab=if(type == "interval") "M" else NULL,
