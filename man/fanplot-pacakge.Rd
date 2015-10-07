@@ -20,7 +20,7 @@ Blog posts with some additional details of the implementation of functions in th
 Github repo:
 \url{http://github.com/gjabel/fanplot} 
 
-R Journal Paper:
+R Journal article:
 \url{http://journal.r-project.org/archive/2015-1/abel.pdf}
 
 }

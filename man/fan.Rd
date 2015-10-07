@@ -162,6 +162,9 @@ See details
 \author{
 Guy J. Abel
 }
+\references{
+Abel, G. J. (2015). fanplot: An R Package for visualising sequential distributions. \emph{The R Journal} 7 (2) 15--23.
+}
 \examples{
 ##
 ## Basic Fan: fan0()
