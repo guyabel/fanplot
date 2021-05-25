@@ -31,7 +31,7 @@ fan <-
     ##
     ##data classes
     ##
-    if(!is(data, "mts")){
+    if(is(data, "mts")[1]){
       start<-start(data)[1]
       frequency<-frequency(data)
     }
@@ -86,7 +86,7 @@ fan <-
       
       
       #ts info
-      if(!is(data, "zoo")){
+      if(!is(data, "zoo")[1]){
         ppts <- ts(pp, start = start, frequency = frequency)
         tt<-time(ppts)
         tt<-as.numeric(tt)
@@ -96,7 +96,7 @@ fan <-
           tt<-as.numeric(tt)
         }
       }
-      if(is(data, "zoo")){
+      if(is(data, "zoo")[1]){
         tt<-time(data)
         if(!is.null(anchor))
           tt<-c(anchor.time,tt)

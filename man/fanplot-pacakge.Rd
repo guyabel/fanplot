@@ -14,15 +14,6 @@ Package: \tab fanplot\cr
 Type: \tab Package\cr
 License: \tab GPL-2\cr
 }
-Blog posts with some additional details of the implementation of functions in the package can be found at
-\url{http://gjabel.wordpress.com/category/r/fanplot/} 
-
-Github repo:
-\url{http://github.com/gjabel/fanplot} 
-
-R Journal article:
-\url{http://journal.r-project.org/archive/2015-1/abel.pdf}
-
 }
 \author{
 Guy J. Abel
