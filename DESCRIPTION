@@ -2,17 +2,20 @@ Package: fanplot
 Type: Package
 Title: Visualisation of Sequential Probability Distributions Using Fan Charts
 Version: 3.4.2
-Author: Guy J. Abel
-Maintainer: "Guy J. Abel" <g.j.abel@gmail.com>
+Authors@R: c(person(c("Guy", "J."), "Abel", role = c("aut", "cre"),
+                    email = "g.j.abel@gmail.com",
+                    comment = c(ORCID = "0000-0002-4893-5687")))
+Maintainer: Guy J. Abel <g.j.abel@gmail.com>
 Description: Visualise sequential distributions using a range of plotting
     styles. Sequential distribution data can be input as either simulations or
     values corresponding to percentiles over time. Plots are added to
     existing graphic devices using the fan function. Users can choose from four
     different styles, including fan chart type plots, where a set of coloured
     polygon, with shadings corresponding to the percentile values are layered
-    to represent different uncertainty levels.
+    to represent different uncertainty levels. Full details in R Journal article; Abel (2015) <doi:10.32614/RJ-2015-002>.
 License: GPL-2
 URL: https://github.com/gjabel/fanplot
+BugReports: https://github.com/gjabel/fanplot/issues
 Imports:
     methods
 Depends: 
