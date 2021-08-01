@@ -23,7 +23,8 @@ are layered to represent different uncertainty levels.
 
 ## ggplot
 
-All plots are using base R. Jason Hilton has a
+The plotting functions in fanplot are designed for working with graphics
+in base R. Jason Hilton has a
 [ggfan](https://github.com/jasonhilton/ggfan) package which is great for
 creating fan charts in ggplot2.
 
@@ -54,6 +55,8 @@ plot(NULL, xlim = c(1, 945), ylim = range(th.mcmc)*0.85, ylab = "Volatility")
 # add fan
 fan(th.mcmc)
 ```
+
+<img src="README_files/figure-gfm/example-1.png" width="100%" />
 
 ## Article
 

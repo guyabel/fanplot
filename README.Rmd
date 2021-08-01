@@ -26,7 +26,7 @@ Visualise sequential distributions using a range of plotting styles. Sequential 
 
 ## ggplot
 
-All plots are using base R. Jason Hilton has a  [ggfan](https://github.com/jasonhilton/ggfan) package which is great for creating fan charts in ggplot2.
+The plotting functions in fanplot are designed for working with graphics in base R. Jason Hilton has a  [ggfan](https://github.com/jasonhilton/ggfan) package which is great for creating fan charts in ggplot2.
 
 ## Installation
 
@@ -57,7 +57,7 @@ fan(th.mcmc)
 ```
 
 ```{r, echo=FALSE}
-# knitr::include_graphics()
+knitr::include_graphics()
 ```
 
 

@@ -1,9 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-do_data.R
 do_test.R
 README.md
-data/consumerpriceinflationdetailedreferencetables_tcm77-331413-1.xls
-data/cpiinternet.xls
-data/102ipsmarginsoferror19752012_tcm77-340939.xls
-data/ips.csv
+README.Rmd
+data-raw
