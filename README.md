@@ -56,7 +56,7 @@ plot(NULL, xlim = c(1, 945), ylim = range(th.mcmc)*0.85, ylab = "Volatility")
 fan(th.mcmc)
 ```
 
-<img src="README_files/figure-gfm/example-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/guyabel/fanplot/master/README_files/figure-gfm/example-1.png" width="100%" />
 
 ## Article
 

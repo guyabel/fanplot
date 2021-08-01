@@ -57,7 +57,7 @@ fan(th.mcmc)
 ```
 
 ```{r, echo=FALSE}
-knitr::include_graphics()
+knitr::include_graphics("https://raw.githubusercontent.com/guyabel/fanplot/master/README_files/figure-gfm/example-1.png")
 ```
 
 
