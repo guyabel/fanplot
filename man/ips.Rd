@@ -24,9 +24,11 @@ Immigration, emigration and net migration flow counts (and their confidence inte
 Data differ slightly from the final adjusted migration estimates published by the ONS, that take account of certain types of migration that the IPS doesn't pick up, such as asylum seekers, people migrating for longer or shorter than they thought they would, and migration over land to and from Northern Ireland. 
 }
 \source{
-Annual statistics on flows of international migrants to and from the UK and England and Wales by the Office of National Statistics. Retrieved from "1.02 IPS Margins of Error, 1975-2012" spreadsheet at:
+Annual statistics on flows of international migrants to and from the UK and England and Wales by the Office of National Statistics. Retrieved from "1.02 IPS Margins of Error, 1975-2012" spreadsheet. 
 
-\url{http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm\%3A77-328992}
+Can not find copy of speadsheet on ONS website anymore, but there is a copy at \url{https://github.com/guyabel/fanplot/tree/master/data-raw/}
+
+
 }
 \examples{
 #standard plot
