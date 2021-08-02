@@ -5,7 +5,8 @@ usethis::use_readme_rmd()
 # usethis::use_citation()
 usethis::use_build_ignore(
   c("build_package.R", "hex", 
-     "README", "vignette", "README_files")
+     "README", "vignettes", "README_files", "net-elicit", 
+    "data-raw")
 )
 
 roxygen2::roxygenise()

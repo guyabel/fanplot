@@ -15,7 +15,7 @@ Description: Visualise sequential distributions using a range of plotting
     to represent different uncertainty levels. Full details in R Journal article; Abel (2015) <doi:10.32614/RJ-2015-002>.
 License: GPL-2
 URL: http://guyabel.github.io/fanplot/
-BugReports: https://github.com/guyabel/fanplot/issues
+BugReports: https://github.com/guyabel/fanplot/issues/
 Imports:
     methods
 Depends: 

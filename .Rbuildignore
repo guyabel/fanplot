@@ -12,3 +12,6 @@ data-raw
 ^pkgdown$
 ^vignettes$
 ^README_files$
+^vignette$
+^net-elicit$
+^data-raw$
