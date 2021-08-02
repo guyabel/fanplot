@@ -26,7 +26,7 @@ Data differ slightly from the final adjusted migration estimates published by th
 \source{
 Annual statistics on flows of international migrants to and from the UK and England and Wales by the Office of National Statistics. Retrieved from "1.02 IPS Margins of Error, 1975-2012" spreadsheet at:
 
-http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm%3A77-328992
+\url{http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm\%3A77-328992}
 }
 \examples{
 #standard plot

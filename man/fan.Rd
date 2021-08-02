@@ -188,7 +188,7 @@ fan(th.mcmc)
 ## colorspace packages installed
 ##
 \dontrun{
-demo("sv_fan", "fanplot")
+# demo("sv_fan", "fanplot")
 }
 
 ##

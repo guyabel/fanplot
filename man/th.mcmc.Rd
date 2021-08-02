@@ -18,7 +18,6 @@ Meyer, R. and J. Yu (2002). BUGS for a Bayesian analysis of stochastic volatilit
 Sturtz, S., U. Ligges, and A. Gelman (2005). R2WinBUGS: a package for running WinBUGS from R. \emph{Journal of Statistical Software} 12 (3), 1--16.
 }
 \examples{
-\dontrun{
 # empty plot
 plot(NULL, type = "n", xlim = c(1, 945), ylim = range(th.mcmc), ylab = "Theta")
 
@@ -28,22 +27,23 @@ fan(th.mcmc)
 ##
 ##Create your own (longer) MCMC sample:
 ##
-library("tsbugs")
-library("R2OpenBUGS")
-# write model file:
-my1.bug <- dget(system.file("model", "my1.R", package = "fanplot"))
-write.model(my1.bug, "my1.txt")
-# take a look:
-file.show("my1.txt")
-# run openbugs, remember to include theta as a param otherwise will not
-# have anything to plot
-my1.mcmc<-bugs(data=list(n=length(svpdx$pdx),y=svpdx$pdx), 
-               inits=list(list(phistar=0.975,mu=0,itau2=50)),
-               param=c("mu","phi","tau","theta"), 
-               model="my1.txt",
-               n.iter=11000, n.burnin=1000, n.chains=1)
-               
-th.mcmc <- my1.mcmc$sims.list$theta
+\dontrun{
+# library(tsbugs)
+# library(R2OpenBUGS)
+# # write model file:
+# my1.bug <- dget(system.file("model", "my1.R", package = "fanplot"))
+# write.model(my1.bug, "my1.txt")
+# # take a look:
+# file.show("my1.txt")
+# # run openbugs, remember to include theta as a param otherwise will not
+# # have anything to plot
+# my1.mcmc<-bugs(data=list(n=length(svpdx$pdx),y=svpdx$pdx), 
+#                inits=list(list(phistar=0.975,mu=0,itau2=50)),
+#                param=c("mu","phi","tau","theta"), 
+#                model="my1.txt",
+#                n.iter=11000, n.burnin=1000, n.chains=1)
+#                
+# th.mcmc <- my1.mcmc$sims.list$theta
 }
 }
 \keyword{datasets}

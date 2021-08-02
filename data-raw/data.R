@@ -116,3 +116,7 @@ ips<-read.csv("./data/ips.csv")
 head(ips)
 plot(ts(ips$net, 1975))
 save(ips, file = "./data/ips.RData")
+
+
+## svpdx copied from tsbugs
+#https://github.com/guyabel/tsbugs/blob/master/data/svpdx.rda?raw=true

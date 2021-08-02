@@ -15,7 +15,7 @@ Time series of quarterly UK CPI from Q1 1997 to Q3 2013. Data formatted from the
 \source{
 October 2013 CPI data by the Office of National Statistics. Retrieved from "Consumer Price Inflation Reference Tables, October 2013" spreadsheet at:
 
-http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm%3A77-306767
+\url{http://www.ons.gov.uk/ons/publications/re-reference-tables.html?edition=tcm\%3A77-306767}
 }
 \examples{
 data(cpi)

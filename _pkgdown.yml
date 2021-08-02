@@ -1,0 +1,14 @@
+reference:
+- title: "Fan charts"
+- contents:
+  - fan
+- title: "Split normal distribution"
+- contents:
+  - dsplitnorm
+- title: "Data"
+- contents:
+  - boe
+  - cpi
+  - ips
+  - svpdx
+  - th.mcmc

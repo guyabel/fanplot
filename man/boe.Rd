@@ -24,7 +24,7 @@ mode, uncertainty and skew parameters relate to those given in \code{\link{dspli
 \source{
 Bank of England Inflation Report November 2013. Retrieved from "Parameters for MPC CPI Inflation Projections from February 2004" spreadsheet at:
 
-http://www.bankofengland.co.uk/publications/pages/inflationreport/irprobab.aspx
+\url{http://www.bankofengland.co.uk/publications/pages/inflationreport/irprobab.aspx}
 }
 \examples{
 ##

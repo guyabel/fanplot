@@ -3,7 +3,7 @@ library(shiny)
 # Define UI for application that plots random distributions
 shinyUI(pageWithSidebar(
   # Application title
-  headerPanel("Elicit Expert Based Forecasts of UK Net Migration"),
+  headerPanel("Elicit expert based forecasts of UK net migration"),
   # Sidebar with a slider input for number of observations
   sidebarPanel(
     radioButtons("cp", h5("Number of Future Change Points:"),
