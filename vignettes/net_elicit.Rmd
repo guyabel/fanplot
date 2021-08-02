@@ -1,5 +1,5 @@
 ---
-title: "."
+title: "Demonstration of fanplot in an app to elicit expert opinion of future distributions"
 ---
 
 <style>

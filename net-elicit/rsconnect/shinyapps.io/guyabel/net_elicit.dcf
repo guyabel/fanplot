@@ -5,9 +5,9 @@ account: guyabel
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 4445065
-bundleId: 4877133
+bundleId: 4878701
 url: https://guyabel.shinyapps.io/net_elicit/
-when: 1627826449.75265
-lastSyncTime: 1627826449.75265
+when: 1627883679.49743
+lastSyncTime: 1627883679.49743
 asMultiple: FALSE
 asStatic: FALSE

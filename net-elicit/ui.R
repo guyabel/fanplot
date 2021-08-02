@@ -1,10 +1,12 @@
 library(shiny)
-
+library(markdown)
 # Define UI for application that plots random distributions
-shinyUI(pageWithSidebar(
-  # Application title
-  headerPanel("Elicit expert based forecasts of UK net migration"),
+shinyUI(fluidPage(
+  title = "Elicit expert based forecasts of UK net migration",
+  fluidRow(width = 12),
+  includeMarkdown("intro.md"),
   # Sidebar with a slider input for number of observations
+  
   sidebarPanel(
     radioButtons("cp", h5("Number of Future Change Points:"),
                        c("0" = 0, "1" = 1, "2" = 2,  "3" = 3), selected=0),

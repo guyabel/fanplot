@@ -21,6 +21,9 @@ four different styles, including fan chart type plots, where a set of
 coloured polygon, with shadings corresponding to the percentile values
 are layered to represent different uncertainty levels.
 
+See the [pkgdown site](http://guyabel.github.io/fanplot/) for full
+details.
+
 ## ggplot
 
 The plotting functions in fanplot are designed for working with graphics

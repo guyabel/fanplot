@@ -1,16 +1,18 @@
 library(shiny)
 library(fanplot)
+library(RColorBrewer)
+library(colorspace)
 
 net<-ts(ips$net, start=1975)
 n<-length(net)
 y0<-time(net)[n]+1
 
-df0<-data.frame(year=y0:2030, mode=net[n], sd=100, skew=0)
+d0<-data.frame(year=y0:2030, mode=net[n], sd=100, skew=0)
 
 shinyServer(function(input, output) {
   output$year1 <- renderUI({
     if(input$cp>=1)
-      sliderInput("year1", h5("Change aaaaaaaaaPoint 1:"),
+      sliderInput("year1", h5("Change Point 1:"),
                   min = y0, max = 2030, value = y0+1, step= 1, sep="")
   })
   output$mode1 <- renderUI({
@@ -69,8 +71,10 @@ shinyServer(function(input, output) {
       sliderInput("skew3",  paste0(input$year3,": Skewness "),
                   min = -0.99, max = 0.99, value = 0, step= 0.01)
   })
+  # input <- NULL
+  # input$mode0 <- 100
   get_d<- reactive({
-    d<-rbind(data.frame(year=y0-1, mode=net[n], sd=1, skew=0), df0)
+    d <- rbind(data.frame(year=y0-1, mode=net[n], sd=1, skew=0), d0)
     #if(!is.null(input$cp)){
     if(input$cp==0){
       d$mode<-approx(x = c(y0-1,        2030),
@@ -123,10 +127,13 @@ shinyServer(function(input, output) {
   netstats <- reactive({
     d<-get_d()
     k<-nrow(d)-1
-    val <- matrix(NA, nrow = 6, ncol = k)
+    # val <- matrix(NA, nrow = 6, ncol = k)
+    val <- matrix(NA, nrow = 99, ncol = k)
     med <- rep(NA, k)
     for (i in 1:k){
-      val[, i] <- qsplitnorm(p=c(0.025, 0.1, 0.25, 0.75, 0.9, 0.975), 
+      val[, i] <- qsplitnorm(
+        p= seq(0.01, 0.99, 0.01), 
+        # p=c(0.025, 0.1, 0.25, 0.75, 0.9, 0.975), 
                              mode = d$mode[i+1],
                              sd = d$sd[i+1],
                              skew = d$skew[i+1])
@@ -151,8 +158,11 @@ shinyServer(function(input, output) {
       lines(net-ips$net.ci, lty=2, col="red")
     }
     grid()
-    fan(val, data.type="values", start=y0, type="interval")
-    lines(ts(med, start=y0), col="orange")
+    lcol <- adjust_transparency(col = "red", alpha = 0.25)
+    fan(val, data.type="values", start=y0, ln = c(10, 25, 75, 90), 
+        fan.col = colorRampPalette(colors = rev(brewer.pal(9,"Reds"))), 
+        ln.col = lcol)
+    lines(ts(med, start=y0), col=lcol)
     text(2030, med[length(med)], "Med", pos=4, offset=0.1, cex=0.8)
   })
   output$df <- renderDataTable({

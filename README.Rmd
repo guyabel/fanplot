@@ -24,6 +24,8 @@ knitr::opts_chunk$set(
 
 Visualise sequential distributions using a range of plotting styles. Sequential distribution data can be input as either simulations or values corresponding to percentiles over time. Plots are added to existing graphic devices using the fan function. Users can choose from four different styles, including fan chart type plots, where a set of coloured polygon, with shadings corresponding to the percentile values are layered to represent different uncertainty levels.
 
+See the [pkgdown site](http://guyabel.github.io/fanplot/) for full details.
+
 ## ggplot
 
 The plotting functions in fanplot are designed for working with graphics in base R. Jason Hilton has a  [ggfan](https://github.com/jasonhilton/ggfan) package which is great for creating fan charts in ggplot2.

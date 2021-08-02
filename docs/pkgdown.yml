@@ -3,6 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   net_elicit: net_elicit.html
+  r_journal: r_journal.html
   sv_fan: sv_fan.html
-last_built: 2021-08-02T03:34Z
+last_built: 2021-08-02T05:57Z
 
