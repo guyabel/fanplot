@@ -12,3 +12,6 @@ reference:
   - ips
   - svpdx
   - th.mcmc
+template:
+  params:
+    ganalytics: 281584718
