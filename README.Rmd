@@ -16,8 +16,8 @@ knitr::opts_chunk$set(
 # fanplot
 
 <!-- badges: start -->
-[![Lifecycle: superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 [![CRAN status](https://www.r-pkg.org/badges/version/fanplot)](https://CRAN.R-project.org/package=fanplot)
+[![Lifecycle: superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 [![R-CMD-check](https://github.com/guyabel/fanplot/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/fanplot/actions)
 <!-- badges: end -->
 
