@@ -9,6 +9,7 @@
 superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fanplot)](https://CRAN.R-project.org/package=fanplot)
+[![R-CMD-check](https://github.com/guyabel/fanplot/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/fanplot/actions)
 <!-- badges: end -->
 
 <img src='https://raw.githubusercontent.com/guyabel/fanplot/master/hex/logo_transp.png' align="right" height="180" style="padding-left: 20px; padding-bottom: 20px;" />
