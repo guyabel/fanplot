@@ -5,5 +5,6 @@
 * Added stickers
 * Expanded README
 * Added hex
+* Github actions working
 
 
