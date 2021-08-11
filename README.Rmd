@@ -17,9 +17,9 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/fanplot)](https://CRAN.R-project.org/package=fanplot)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/fanplot?color=blue)](https://r-pkg.org/pkg/fanplot)
 [![Lifecycle: superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 [![R-CMD-check](https://github.com/guyabel/fanplot/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/fanplot/actions)
-[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/fanplot?color=blue)](https://r-pkg.org/pkg/fanplot)
 <!-- badges: end -->
 
 <img src='https://raw.githubusercontent.com/guyabel/fanplot/master/hex/logo_transp.png' align="right" height="180" style="padding-left: 20px; padding-bottom: 20px;" />
