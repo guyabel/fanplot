@@ -1,4 +1,5 @@
 usethis::use_cran_badge()
+cranlogs::cranlogs_badge(package_name = "fanplot", summary = "grand-total")
 usethis::use_lifecycle_badge(stage = "superseded")
 usethis::use_news_md()
 usethis::use_readme_rmd()
