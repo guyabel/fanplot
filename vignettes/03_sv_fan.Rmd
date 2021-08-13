@@ -14,7 +14,7 @@ knitr::opts_chunk$set(fig.width=10, fig.height=8)
 ```
 
 
-## Demo file
+# Demo file
 
 Below are some examples of different plotting styles to represent uncertainty in time series data. All plots are based on the `th.mcmc` data, the estimated posterior distributions of the volatility in daily returns from the Pound/Dollar exchange rate from 02/10/1981 to 28/6/1985. To run the demo file from your R console (ensure fanplot, zoo, tsbugs, RColorBrewer and colorspace packages are all installed beforehand). Note, `tsbugs` is no longer on CRAN - install with `devtools::install_github("guyabel/tsbugs)`
 
