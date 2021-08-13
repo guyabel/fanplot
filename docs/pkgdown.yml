@@ -1,0 +1,11 @@
+pandoc: 2.11.4
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  01_r_journal: 01_r_journal.html
+  02_boe: 02_boe.html
+  03_sv_fan: 03_sv_fan.html
+  04_net_elicit: 04_net_elicit.html
+  fanplot: fanplot.html
+last_built: 2021-08-13T15:15Z
+
