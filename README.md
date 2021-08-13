@@ -30,9 +30,9 @@ details.
 ## ggplot
 
 The plotting functions in fanplot are designed for working with graphics
-in base R. Jason Hilton has a
-[ggfan](https://github.com/jasonhilton/ggfan) package which is great for
-creating fan charts in ggplot2.
+in base R. Jason Hilton has since developed the excellent
+[ggfan](https://github.com/jasonhilton/ggfan) package for creating fan
+charts in ggplot2.
 
 ## Installation
 
