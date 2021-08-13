@@ -1,6 +1,5 @@
 ---
 title: "Gallary of fanplot styles"
-author: "Guy J. Abel"
 output: 
   html_document:
     toc: true
