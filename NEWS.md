@@ -6,5 +6,6 @@
 * Expanded README
 * Added hex
 * Github actions working
+* Transferred blog posts from `https://gjabel.wordpress.com/` 
 
 

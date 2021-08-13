@@ -115,7 +115,7 @@ fan(data = th.mcmc,
 
 # 16. Irregular time series.
 library("zoo")
-library("tsbugs")
+
 th.mcmc2 <- zoo(th.mcmc, order.by=svpdx$date) 
 plot(th.mcmc2[,1], type="n", ylim = range(th.mcmc)*0.85, main="X-Axis Based On (Irregular) Dates")
 fan(data = th.mcmc2, rcex=0.5)
