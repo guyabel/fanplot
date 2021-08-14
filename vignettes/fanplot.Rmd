@@ -50,8 +50,7 @@ When argument `type = "interval"` is set, the `probs` argument corresponds to pr
 
 ```{r}
 # empty plot
-plot(NULL, main="Prediction Intervals",
-     xlim = c(-20, 965), ylim = c(-2.5, 1.5))
+plot(NULL, main="Prediction Intervals", xlim = c(-20, 965), ylim = c(-2.5, 1.5))
 
 # add fan
 fan(data = th.mcmc, type = "interval", llab=TRUE, rcex=0.6)
@@ -66,12 +65,10 @@ Alternative colour schemes to the default `heat.colors`, can be obtained by supp
 
 ```{r}
 # empty plot
-plot(NULL, main="Alternative Colour Scheme",
-xlim = c(-20, 965), ylim = c(-2.5, 1.5))
+plot(NULL, xlim = c(-20, 965), ylim = c(-2.5, 1.5),  main="Alternative Colour Scheme")
 
 # add fan
-fan(data = th.mcmc, rlab=seq(20,80,15), llab=c(10,50,90),
-    fan.col=colorRampPalette(c("royalblue", "grey", "white")))
+fan(data = th.mcmc, rlab=seq(20,80,15), llab=c(10,50,90), fan.col=colorRampPalette(c("royalblue", "grey", "white")))
 ```
 
 <!-- <a href="http://gjabel.files.wordpress.com/2012/08/fanplot-sv3.png"><img class="aligncenter size-full wp-image-1232" src="http://gjabel.files.wordpress.com/2012/08/fanplot-sv3.png" alt="fanplot-sv3" width="640" height="640" /></a> -->
@@ -128,12 +125,10 @@ Users might want to connect the fan with the past data. This can be achieved by 
 
 ```{r}
 # empty plot
-plot(net, main="UK Net Migration",
-     xlim=c(1975,2020), ylim=c(-100,300))
+plot(net, main="UK Net Migration", xlim=c(1975,2020), ylim=c(-100,300))
 
 # add fan
-fan(mm, start=2013, anchor=net[time(net)==2012],
-    type="interval", probs=seq(5, 95, 5), ln=c(50, 80))
+fan(mm, start=2013, anchor=net[time(net)==2012], type="interval", probs=seq(5, 95, 5), ln=c(50, 80))
 ```
 
 

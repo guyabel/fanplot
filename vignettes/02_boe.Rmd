@@ -59,9 +59,7 @@ p <- c(0.01, p, 0.99)
 # (row) at each future time point (column)
 cpival <- matrix(NA, nrow = length(p), ncol = k)
 for (i in 1:k)
-   cpival[, i] <- qsplitnorm(p, mode = boe0$mode[i],
-                                sd = boe0$uncertainty[i],
-                                skew = boe0$skew[i])
+   cpival[, i] <- qsplitnorm(p, mode = boe0$mode[i], sd = boe0$uncertainty[i], skew = boe0$skew[i])
 ```
 
 The new object `cpival` contains the values evaluated from the `qsplitnorm `function in 6 rows and 13 columns, where rows represent the probabilities used in the calculation `p` and columns represent successive time periods.
@@ -78,8 +76,7 @@ plot(cpi, type = "l", col = "tomato", lwd = 2,
      xaxt = "n", yaxt = "n", ylab="")
 
 # background
-rect(y0 - 0.25, par("usr")[3] - 1, y0 + 3, par("usr")[4] + 1,
-     border = "gray90", col = "gray90")
+rect(y0 - 0.25, par("usr")[3] - 1, y0 + 3, par("usr")[4] + 1, border = "gray90", col = "gray90")
 
 # add fan
 fan(data = cpival, data.type = "values", probs = p,
@@ -107,21 +104,16 @@ By default, the `fan` function treats objects passed to the `data` argument as s
 #simulate future values
 cpisim <- matrix(NA, nrow = 10000, ncol = k)
 for (i in 1:k)
-   cpisim[, i] <- rsplitnorm(n = 10000, 
-                             mode = boe0$mode[i],
-                             sd = boe0$uncertainty[i],
-                             skew = boe0$skew[i])
+   cpisim[, i] <- rsplitnorm(n = 10000, mode = boe0$mode[i], sd = boe0$uncertainty[i], skew = boe0$skew[i])
 ```
 
 The fan chart based on the simulations in `cpisim` can then be added to the plot;
 ```{r}
 # truncate cpi series
-cpi0 <- ts(cpi[time(cpi)<2013], start=start(cpi),
-           frequency=frequency(cpi) )
+cpi0 <- ts(cpi[time(cpi)<2013], start=start(cpi), frequency=frequency(cpi) )
 
 # past data
-plot(cpi0, type = "l", lwd = 2,
-     xlim = c(y0 - 5, y0 + 3.25), ylim = c(-2, 7))
+plot(cpi0, type = "l", lwd = 2, xlim = c(y0 - 5, y0 + 3.25), ylim = c(-2, 7))
 
 # add fan
 fan(data = cpisim, start = y0, frequency = 4)
