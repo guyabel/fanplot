@@ -29,7 +29,7 @@ details.
 
 ## ggplot
 
-The plotting functions in fanplot are designed for working with graphics
+The plotting functions in fanplot was designed for working with graphics
 in base R. Jason Hilton has since developed the excellent
 [ggfan](https://github.com/jasonhilton/ggfan) package for creating fan
 charts in ggplot2.
