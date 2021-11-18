@@ -1,5 +1,5 @@
 
-## Eliciting future probabiltiy distributions
+## Eliciting future probability distributions
 
 Eliciting potential future distributions is typically undertaken in order to combine expert opinions and past data. It usually involves a series of questions, without any visual guidance to how the answers provided translate into the implied future distributions. I have been on both sides of the process; helping design and convert questionnaires answers into model inputs and responding to questions as an expert myself. From both standpoints there are hidden layers of uncertainty in the elicitation exercises, where those asking questions are making assumptions about the respondents implied distributions and the respondent is themselves are unsure of how the answers will be incorporated into a model.
 
