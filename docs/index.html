@@ -38,6 +38,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -50,18 +52,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fanplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/fanplot.html">Get started</a>
 </li>
@@ -69,7 +65,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -85,7 +81,7 @@
       <a href="articles/03_sv_fan.html">Gallary of fanplot styles</a>
     </li>
     <li>
-      <a href="articles/04_net_elicit.html">Demonstration of fanplot in an app to elicit expert opinion of future distributions</a>
+      <a href="articles/04_net_elicit.html">Demonstration of fanplot to elicit expert opinion of future distributions within a shiny app</a>
     </li>
   </ul>
 </li>
@@ -95,19 +91,19 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/guyabel/fanplot/">
+  <a href="https://github.com/guyabel/fanplot/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/guyabelguyabel">
+  <a href="https://twitter.com/guyabelguyabel" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://guyabel.com">
+  <a href="https://guyabel.com" class="external-link">
     <span class="fas fa-blog fa-lg"></span>
      
   </a>
@@ -124,51 +120,51 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="fanplot" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#fanplot" class="anchor"></a>fanplot</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="fanplot">fanplot<a class="anchor" aria-label="anchor" href="#fanplot"></a>
+</h1></div>
 <!-- badges: start -->
 
-<p><img src="https://raw.githubusercontent.com/guyabel/fanplot/master/hex/logo_transp.png" align="right" height="180" style="padding-left: 20px; padding-bottom: 20px;"></p>
+<p><img src="https://raw.githubusercontent.com/guyabel/fanplot/master/hex/logo_transp.png" align="right" height="200" style="float:right; height:200px;"></p>
 <p>Visualise sequential distributions using a range of plotting styles. Sequential distribution data can be input as either simulations or values corresponding to percentiles over time. Plots are added to existing graphic devices using the fan function. Users can choose from four different styles, including fan chart type plots, where a set of coloured polygon, with shadings corresponding to the percentile values are layered to represent different uncertainty levels.</p>
-<p>See the <a href="http://guyabel.github.io/fanplot/">pkgdown site</a> for full details.</p>
-<div id="ggplot" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ggplot" class="anchor"></a>ggplot</h2>
-<p>The plotting functions in fanplot was designed for working with graphics in base R. Jason Hilton has since developed the excellent <a href="https://github.com/jasonhilton/ggfan">ggfan</a> package for creating fan charts in ggplot2.</p>
+<p>See the <a href="http://guyabel.github.io/fanplot/" class="external-link">pkgdown site</a> for full details.</p>
+<div class="section level2">
+<h2 id="ggplot">ggplot<a class="anchor" aria-label="anchor" href="#ggplot"></a>
+</h2>
+<p>The plotting functions in fanplot was designed for working with graphics in base R. Jason Hilton has since developed the excellent <a href="https://github.com/jasonhilton/ggfan" class="external-link">ggfan</a> package for creating fan charts in ggplot2.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of fanplot from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of fanplot from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"fanplot"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"fanplot"</span><span class="op">)</span></code></pre></div>
+<p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"guyabel/fanplot"</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"guyabel/fanplot"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/">fanplot</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/" class="external-link">fanplot</a></span><span class="op">)</span>
 
 <span class="co"># empty plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">945</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, ylab <span class="op">=</span> <span class="st">"Volatility"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">945</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, ylab <span class="op">=</span> <span class="st">"Volatility"</span><span class="op">)</span>
 
 <span class="co"># add fan</span>
 <span class="fu"><a href="reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/guyabel/fanplot/master/README_files/figure-gfm/example-1.png" width="100%"></p>
 </div>
-<div id="article" class="section level2">
-<h2 class="hasAnchor">
-<a href="#article" class="anchor"></a>Article</h2>
-<p>Read more about the fanplot package in the <em>R Journal</em> <a href="http://journal.r-project.org/archive/2015-1/abel.pdf">article</a></p>
+<div class="section level2">
+<h2 id="article">Article<a class="anchor" aria-label="anchor" href="#article"></a>
+</h2>
+<p>Read more about the fanplot package in the <em>R Journal</em> <a href="http://journal.r-project.org/archive/2015-1/abel.pdf" class="external-link">article</a></p>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h2>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
 <p>Abel, G. J. (2015). fanplot: An R package for visualising sequential distributions. <em>R Journal</em>, 7(1), 15–23.</p>
 </div>
 </div>
@@ -176,54 +172,58 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=fanplot">https://​cloud.r-project.org/​package=fanplot</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/guyabel/fanplot/">https://​github.com/​guyabel/​fanplot/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/guyabel/fanplot/issues/">https://​github.com/​guyabel/​fanplot/​issues/​</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-2">GPL-2</a></li>
-</ul>
-</div>
-<div class="citation">
-<h2>Citation</h2>
-<ul class="list-unstyled">
-<li><a href="authors.html">Citing fanplot</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Guy J. Abel <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4893-5687" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="https://cloud.r-project.org/package=fanplot" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/guyabel/fanplot/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/guyabel/fanplot/issues/" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=fanplot"><img src="https://www.r-pkg.org/badges/version/fanplot" alt="CRAN status"></a></li>
-<li><a href="https://r-pkg.org/pkg/fanplot"><img src="https://cranlogs.r-pkg.org/badges/grand-total/fanplot?color=blue" alt="CRAN RStudio mirror downloads"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#superseded"><img src="https://img.shields.io/badge/lifecycle-superseded-blue.svg" alt="Lifecycle: superseded"></a></li>
-<li><a href="https://github.com/guyabel/fanplot/actions"><img src="https://github.com/guyabel/fanplot/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-2" class="external-link">GPL-2</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing fanplot</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Guy J. Abel <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4893-5687" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://CRAN.R-project.org/package=fanplot" class="external-link"><img src="https://www.r-pkg.org/badges/version/fanplot" alt="CRAN status"></a></li>
+<li><a href="https://r-pkg.org/pkg/fanplot" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/fanplot?color=blue" alt="CRAN RStudio mirror downloads"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#superseded" class="external-link"><img src="https://img.shields.io/badge/lifecycle-superseded-blue.svg" alt="Lifecycle: superseded"></a></li>
+<li><a href="https://github.com/guyabel/fanplot/actions" class="external-link"><img src="https://github.com/guyabel/fanplot/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Guy J. Abel.</p>
+  <p></p>
+<p>Developed by Guy J. Abel.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -231,6 +231,8 @@
 
   
 
+
+  
 
   </body>
 </html>

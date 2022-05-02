@@ -32,6 +32,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,18 +46,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fanplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/fanplot.html">Get started</a>
 </li>
@@ -63,7 +59,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -79,7 +75,7 @@
       <a href="../articles/03_sv_fan.html">Gallary of fanplot styles</a>
     </li>
     <li>
-      <a href="../articles/04_net_elicit.html">Demonstration of fanplot in an app to elicit expert opinion of future distributions</a>
+      <a href="../articles/04_net_elicit.html">Demonstration of fanplot to elicit expert opinion of future distributions within a shiny app</a>
     </li>
   </ul>
 </li>
@@ -89,19 +85,19 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/guyabel/fanplot/">
+  <a href="https://github.com/guyabel/fanplot/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/guyabelguyabel">
+  <a href="https://twitter.com/guyabelguyabel" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://guyabel.com">
+  <a href="https://guyabel.com" class="external-link">
     <span class="fas fa-blog fa-lg"></span>
      
   </a>
@@ -116,121 +112,215 @@
 
       
 
-      </header><script src="02_boe_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Bank of England Fan Charts in R</h1>
-                        <h4 class="author">Guy J. Abel</h4>
+                        <h4 data-toc-skip class="author">Guy J.
+Abel</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/guyabel/fanplot/blob/master/vignettes/02_boe.Rmd"><code>vignettes/02_boe.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/guyabel/fanplot/blob/HEAD/vignettes/02_boe.Rmd" class="external-link"><code>vignettes/02_boe.Rmd</code></a></small>
       <div class="hidden name"><code>02_boe.Rmd</code></div>
 
     </div>
 
     
     
-<p>The Bank of England were one of the earliest pioneers of using fan charts to illustrate uncertainty in their forecasts, similar to this one:</p>
+<p>The Bank of England were one of the earliest pioneers of using fan
+charts to illustrate uncertainty in their forecasts, similar to this
+one:</p>
 <figure><img src="http://gjabel.files.wordpress.com/2014/03/mpcinffeb13.png" width="500"><br><figcaption>
-Bank of England February 2013 CPI Fan Chart. Obtained from Chart 5.3 in <a href="https://www.bankofengland.co.uk/-/media/boe/files/inflation-report/2013/february-2013.pdf?la=en&amp;hash=60568504A878E0DC881EC0A28263A1197F3CA811">February 2013 Inflation Report</a>
+Bank of England February 2013 CPI Fan Chart. Obtained from Chart 5.3 in
+<a href="https://www.bankofengland.co.uk/-/media/boe/files/inflation-report/2013/february-2013.pdf?la=en&amp;hash=60568504A878E0DC881EC0A28263A1197F3CA811" class="external-link">February
+2013 Inflation Report</a>
 </figcaption></figure><p><br></p>
-<p>As far as I can tell these charts were made in Excel, although (appropriately) I am not completely certain. There are also <a href="http://www.mathworks.de/matlabcentral/fileexchange/27702-fan-chart">MATLAB scripts</a> to create fan charts.</p>
-<p>The fanplot package can also replicate Bank of England fan charts in R….</p>
-<div id="split-normal-two-piece-normal-distribution-" class="section level2">
-<h2 class="hasAnchor">
-<a href="#split-normal-two-piece-normal-distribution-" class="anchor"></a>Split Normal (Two-Piece) Normal Distribution.</h2>
-<p>The Bank of England produce fan charts of forecasts for CPI and GDP in their quarterly <a href="http://www.bankofengland.co.uk/publications/Pages/inflationreport/default.aspx">Inflation Reports</a>. They also provide data, in the form of mode, uncertainty and a skewness parameters of a split-normal distribution that underlie their fan charts (The Bank of England predominately refer to the equivalent, re-parametrised, two-piece normal distribution). The probability density of the split-normal distribution is given by Julio (2007) as</p>
-<p><span class="math display">\[f(x; \mu, \sigma_1, \sigma_2) = \left\{\begin{array}{ll}\frac{\sqrt 2}{\sqrt\pi (\sigma_1+\sigma_2)} e^{-\frac{1}{2\sigma_1^2}(x-\mu)^2} \quad \mbox{for } -\infty &lt; x \leq \mu \\\frac{\sqrt 2}{\sqrt\pi (\sigma_1+\sigma_2)} e^{-\frac{1}{2\sigma_2^2}(x-\mu)^2} \quad \mbox{for } \mu &lt; x &lt; \infty \\\end{array},\right.\]</span></p>
-<p>where <span class="math inline">\(\mu\)</span> represents the mode parameter, and the two standard deviations <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> can be derived given the overall uncertainty parameter, <span class="math inline">\(\sigma\)</span> and skewness parameters, <span class="math inline">\(\gamma\)</span>, as; <span class="math inline">\(\sigma^2=\sigma^2_1(1+\gamma)=\sigma^2_2(1-\gamma).\)</span> The fanplot package contains functions for the density, distribution and quantile of a split normal distribution (<code>dsplitnorm</code>, <code>psplitnorm</code> and <code>qsplitnorm</code>) and a random generator function <code>rsplitnorm</code></p>
+<p>As far as I can tell these charts were made in Excel, although
+(appropriately) I am not completely certain. There are also
+<a href="http://www.mathworks.de/matlabcentral/fileexchange/27702-fan-chart" class="external-link">MATLAB
+scripts</a> to create fan charts.</p>
+<p>The fanplot package can also replicate Bank of England fan charts in
+R….</p>
+<div class="section level2">
+<h2 id="split-normal-two-piece-normal-distribution-">Split Normal (Two-Piece) Normal Distribution.<a class="anchor" aria-label="anchor" href="#split-normal-two-piece-normal-distribution-"></a>
+</h2>
+<p>The Bank of England produce fan charts of forecasts for CPI and GDP
+in their quarterly
+<a href="http://www.bankofengland.co.uk/publications/Pages/inflationreport/default.aspx" class="external-link">Inflation
+Reports</a>. They also provide data, in the form of mode, uncertainty
+and a skewness parameters of a split-normal distribution that underlie
+their fan charts (The Bank of England predominately refer to the
+equivalent, re-parametrised, two-piece normal distribution). The
+probability density of the split-normal distribution is given by Julio
+(2007) as</p>
+<p><span class="math display">\[f(x; \mu, \sigma_1, \sigma_2) =
+\left\{\begin{array}{ll}\frac{\sqrt 2}{\sqrt\pi (\sigma_1+\sigma_2)}
+e^{-\frac{1}{2\sigma_1^2}(x-\mu)^2} \quad \mbox{for } -\infty &lt; x
+\leq \mu \\\frac{\sqrt 2}{\sqrt\pi (\sigma_1+\sigma_2)}
+e^{-\frac{1}{2\sigma_2^2}(x-\mu)^2} \quad \mbox{for } \mu &lt; x &lt;
+\infty \\\end{array},\right.\]</span></p>
+<p>where <span class="math inline">\(\mu\)</span> represents the mode
+parameter, and the two standard deviations <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> can be derived given the overall
+uncertainty parameter, <span class="math inline">\(\sigma\)</span> and
+skewness parameters, <span class="math inline">\(\gamma\)</span>, as;
+<span class="math inline">\(\sigma^2=\sigma^2_1(1+\gamma)=\sigma^2_2(1-\gamma).\)</span>
+The fanplot package contains functions for the density, distribution and
+quantile of a split normal distribution (<code>dsplitnorm</code>,
+<code>psplitnorm</code> and <code>qsplitnorm</code>) and a random
+generator function <code>rsplitnorm</code></p>
 </div>
-<div id="fan-chart-plots-for-cpi-" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fan-chart-plots-for-cpi-" class="anchor"></a>Fan Chart Plots for CPI.</h2>
-<p>In order to reproduce the Bank of England plots there are two data sets in the fanplot package. The <code>cpi</code> object is a time series data frame with past values of CPI index. The <code>boe</code> object is a data frame with historical details on the split normal parameters for CPI inflation between Q1 2004 to Q4 2013 forecasts published by the Bank of England.</p>
+<div class="section level2">
+<h2 id="fan-chart-plots-for-cpi-">Fan Chart Plots for CPI.<a class="anchor" aria-label="anchor" href="#fan-chart-plots-for-cpi-"></a>
+</h2>
+<p>In order to reproduce the Bank of England plots there are two data
+sets in the fanplot package. The <code>cpi</code> object is a time
+series data frame with past values of CPI index. The <code>boe</code>
+object is a data frame with historical details on the split normal
+parameters for CPI inflation between Q1 2004 to Q4 2013 forecasts
+published by the Bank of England.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/">fanplot</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">boe</span><span class="op">)</span></code></pre></div>
-<pre><code>##   time0    time mode uncertainty skew
-## 1  2004 2004.00 1.34      0.2249    0
-## 2  2004 2004.25 1.60      0.3149    0
-## 3  2004 2004.50 1.60      0.3824    0
-## 4  2004 2004.75 1.71      0.4274    0
-## 5  2004 2005.00 1.77      0.4499    0
-## 6  2004 2005.25 1.68      0.4761    0</code></pre>
-<p>The first column <code>time0</code> refers to the base year of forecast, the second, <code>time</code> indexes future projections, whilst the remaining three columns provide values for the corresponding projected mode (<span class="math inline">\(\mu\)</span>), uncertainty (<span class="math inline">\(\sigma\)</span>) and skew (<span class="math inline">\(\gamma\)</span>) parameters: Users can replicate past Bank of England fan charts for a particular period after creating a matrix object that contains values on the split-normal quantile function for a set of user defined probabilities. For example, in the code below, a subset of the Bank of England future parameters of CPI published in Q1 2013 are first selected. Then a vector of probabilities related to the percentiles, that we ultimately would like to plot different shaded fans for, are created. Finally, in a <code>for</code> loop the <code>qsplitnorm</code> function, calculates the values for which the time-specific (<code>i</code>) split-normal distribution will be less than or equal to the probabilities of <code>p</code>.</p>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/" class="external-link">fanplot</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">boe</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##   time0    time mode uncertainty skew</span>
+<span class="co">## 1  2004 2004.00 1.34      0.2249    0</span>
+<span class="co">## 2  2004 2004.25 1.60      0.3149    0</span>
+<span class="co">## 3  2004 2004.50 1.60      0.3824    0</span>
+<span class="co">## 4  2004 2004.75 1.71      0.4274    0</span>
+<span class="co">## 5  2004 2005.00 1.77      0.4499    0</span>
+<span class="co">## 6  2004 2005.25 1.68      0.4761    0</span></code></pre>
+<p>The first column <code>time0</code> refers to the base year of
+forecast, the second, <code>time</code> indexes future projections,
+whilst the remaining three columns provide values for the corresponding
+projected mode (<span class="math inline">\(\mu\)</span>), uncertainty
+(<span class="math inline">\(\sigma\)</span>) and skew (<span class="math inline">\(\gamma\)</span>) parameters: Users can replicate
+past Bank of England fan charts for a particular period after creating a
+matrix object that contains values on the split-normal quantile function
+for a set of user defined probabilities. For example, in the code below,
+a subset of the Bank of England future parameters of CPI published in Q1
+2013 are first selected. Then a vector of probabilities related to the
+percentiles, that we ultimately would like to plot different shaded fans
+for, are created. Finally, in a <code>for</code> loop the
+<code>qsplitnorm</code> function, calculates the values for which the
+time-specific (<code>i</code>) split-normal distribution will be less
+than or equal to the probabilities of <code>p</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># select relevant data</span>
 <span class="va">y0</span> <span class="op">&lt;-</span> <span class="fl">2013</span>
-<span class="va">boe0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">boe</span>, <span class="va">time0</span><span class="op">==</span><span class="va">y0</span><span class="op">)</span>
-<span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">boe0</span><span class="op">)</span>
+<span class="va">boe0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">boe</span>, <span class="va">time0</span><span class="op">==</span><span class="va">y0</span><span class="op">)</span>
+<span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">boe0</span><span class="op">)</span>
 
 <span class="co"># guess work to set percentiles the BOE are plotting</span>
-<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.95</span>, <span class="fl">0.05</span><span class="op">)</span>
-<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="va">p</span>, <span class="fl">0.99</span><span class="op">)</span>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.95</span>, <span class="fl">0.05</span><span class="op">)</span>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="va">p</span>, <span class="fl">0.99</span><span class="op">)</span>
 
 <span class="co"># quantiles of split-normal distribution for each probability</span>
 <span class="co"># (row) at each future time point (column)</span>
-<span class="va">cpival</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, nrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="va">k</span><span class="op">)</span>
+<span class="va">cpival</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, nrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="va">k</span><span class="op">)</span>
 <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">k</span><span class="op">)</span>
    <span class="va">cpival</span><span class="op">[</span>, <span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dsplitnorm.html">qsplitnorm</a></span><span class="op">(</span><span class="va">p</span>, mode <span class="op">=</span> <span class="va">boe0</span><span class="op">$</span><span class="va">mode</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, sd <span class="op">=</span> <span class="va">boe0</span><span class="op">$</span><span class="va">uncertainty</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, skew <span class="op">=</span> <span class="va">boe0</span><span class="op">$</span><span class="va">skew</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></code></pre></div>
-<p>The new object <code>cpival</code> contains the values evaluated from the <code>qsplitnorm</code>function in 6 rows and 13 columns, where rows represent the probabilities used in the calculation <code>p</code> and columns represent successive time periods.</p>
+<p>The new object <code>cpival</code> contains the values evaluated from
+the <code>qsplitnorm</code>function in 6 rows and 13 columns, where rows
+represent the probabilities used in the calculation <code>p</code> and
+columns represent successive time periods.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cpival</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></code></pre></div>
-<pre><code>##          [,1]      [,2]      [,3]      [,4]       [,5]
-## [1,] 1.310928 0.8728139 0.6377539 0.1755382 -0.1673062
-## [2,] 1.726639 1.4725288 1.3942125 1.0410359  0.7458961
-## [3,] 1.948254 1.7922346 1.7974778 1.5024295  1.2327209
-## [4,] 2.097776 2.0079386 2.0695589 1.8137296  1.5611793
-## [5,] 2.216611 2.1793733 2.2858004 2.0611410  1.8222275</code></pre>
-<p>The object <code>cpival</code> can be used to add a fan chart to the active R graphic device. In the code below, the area of the plot is set up when plotting the past CPI data, contained in the time series object <code>cpi</code>. The <code>xlim</code> arguments are set to ensure space on the right hand side of the plotting area for the fan. Following the Bank of England style for plotting fan charts, the background for future values is set to a gray colour, y-axis are plotted on the right hand side, a horizontal line are added for the CPI target and a vertical line for the two-year ahead point.</p>
+<pre><code><span class="co">##          [,1]      [,2]      [,3]      [,4]       [,5]</span>
+<span class="co">## [1,] 1.310928 0.8728139 0.6377539 0.1755382 -0.1673062</span>
+<span class="co">## [2,] 1.726639 1.4725288 1.3942125 1.0410359  0.7458961</span>
+<span class="co">## [3,] 1.948254 1.7922346 1.7974778 1.5024295  1.2327209</span>
+<span class="co">## [4,] 2.097776 2.0079386 2.0695589 1.8137296  1.5611793</span>
+<span class="co">## [5,] 2.216611 2.1793733 2.2858004 2.0611410  1.8222275</span></code></pre>
+<p>The object <code>cpival</code> can be used to add a fan chart to the
+active R graphic device. In the code below, the area of the plot is set
+up when plotting the past CPI data, contained in the time series object
+<code>cpi</code>. The <code>xlim</code> arguments are set to ensure
+space on the right hand side of the plotting area for the fan. Following
+the Bank of England style for plotting fan charts, the background for
+future values is set to a gray colour, y-axis are plotted on the right
+hand side, a horizontal line are added for the CPI target and a vertical
+line for the two-year ahead point.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># past data</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cpi</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, lwd <span class="op">=</span> <span class="fl">2</span>,
-     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">y0</span> <span class="op">-</span> <span class="fl">5</span>, <span class="va">y0</span> <span class="op">+</span> <span class="fl">3</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">7</span><span class="op">)</span>,
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">cpi</span>, type <span class="op">=</span> <span class="st">"l"</span>, col <span class="op">=</span> <span class="st">"tomato"</span>, lwd <span class="op">=</span> <span class="fl">2</span>,
+     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y0</span> <span class="op">-</span> <span class="fl">5</span>, <span class="va">y0</span> <span class="op">+</span> <span class="fl">3</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">7</span><span class="op">)</span>,
      xaxt <span class="op">=</span> <span class="st">"n"</span>, yaxt <span class="op">=</span> <span class="st">"n"</span>, ylab<span class="op">=</span><span class="st">""</span><span class="op">)</span>
 
 <span class="co"># background</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/rect.html">rect</a></span><span class="op">(</span><span class="va">y0</span> <span class="op">-</span> <span class="fl">0.25</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"usr"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="fl">1</span>, <span class="va">y0</span> <span class="op">+</span> <span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="st">"usr"</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span> <span class="op">+</span> <span class="fl">1</span>, border <span class="op">=</span> <span class="st">"gray90"</span>, col <span class="op">=</span> <span class="st">"gray90"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/rect.html" class="external-link">rect</a></span><span class="op">(</span><span class="va">y0</span> <span class="op">-</span> <span class="fl">0.25</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="st">"usr"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">-</span> <span class="fl">1</span>, <span class="va">y0</span> <span class="op">+</span> <span class="fl">3</span>, <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="st">"usr"</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">]</span> <span class="op">+</span> <span class="fl">1</span>, border <span class="op">=</span> <span class="st">"gray90"</span>, col <span class="op">=</span> <span class="st">"gray90"</span><span class="op">)</span>
 
 <span class="co"># add fan</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cpival</span>, data.type <span class="op">=</span> <span class="st">"values"</span>, probs <span class="op">=</span> <span class="va">p</span>,
     start <span class="op">=</span> <span class="va">y0</span>, frequency <span class="op">=</span> <span class="fl">4</span>,
-    anchor <span class="op">=</span> <span class="va">cpi</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html">time</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">)</span> <span class="op">==</span> <span class="va">y0</span> <span class="op">-</span> <span class="fl">0.25</span><span class="op">]</span>,
-    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tomato"</span>, <span class="st">"gray90"</span><span class="op">)</span><span class="op">)</span>,
+    anchor <span class="op">=</span> <span class="va">cpi</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">time</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">)</span> <span class="op">==</span> <span class="va">y0</span> <span class="op">-</span> <span class="fl">0.25</span><span class="op">]</span>,
+    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html" class="external-link">colorRampPalette</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tomato"</span>, <span class="st">"gray90"</span><span class="op">)</span><span class="op">)</span>,
     ln <span class="op">=</span> <span class="cn">NULL</span>, rlab <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
 <span class="co"># boe aesthetics</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">2</span>, at <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">7</span>, las <span class="op">=</span> <span class="fl">2</span>, tcl <span class="op">=</span> <span class="fl">0.5</span>, labels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">4</span>, at <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">7</span>, las <span class="op">=</span> <span class="fl">2</span>, tcl <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fl">2008</span><span class="op">:</span><span class="fl">2016</span>, tcl <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2008</span>, <span class="fl">2016</span>, <span class="fl">0.25</span><span class="op">)</span>, labels <span class="op">=</span> <span class="cn">FALSE</span>, tcl <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>  <span class="co">#boe cpi target</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="va">y0</span> <span class="op">+</span> <span class="fl">1.75</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>  <span class="co">#2 year line</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">2</span>, at <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">7</span>, las <span class="op">=</span> <span class="fl">2</span>, tcl <span class="op">=</span> <span class="fl">0.5</span>, labels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">4</span>, at <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">7</span>, las <span class="op">=</span> <span class="fl">2</span>, tcl <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fl">2008</span><span class="op">:</span><span class="fl">2016</span>, tcl <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">2008</span>, <span class="fl">2016</span>, <span class="fl">0.25</span><span class="op">)</span>, labels <span class="op">=</span> <span class="cn">FALSE</span>, tcl <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>  <span class="co">#boe cpi target</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="va">y0</span> <span class="op">+</span> <span class="fl">1.75</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>  <span class="co">#2 year line</span></code></pre></div>
 <p><img src="02_boe_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 <!-- <a href="http://gjabel.files.wordpress.com/2013/04/boe1.png"><img class="aligncenter size-full wp-image-1192" src="http://gjabel.files.wordpress.com/2013/04/boe1.png" alt="boe1" width="578" height="522" /></a> -->
-<p>The fan chart itself is outputted from the <code>fan</code> function, where arguments are set to ensure a close resemblance of the R plot to that produced by the Bank of England. The first three arguments in the <code>fan</code> function called in the above code, provide the <code>cpival</code> data to plotted, indicate that the data are a set of calculated values (as opposed to simulations) and provide the probabilities that correspond to each row of <code>cpival</code> object. The next two arguments define the start time and frequency of the data. These operate in a similar fashion to those used when defining time series in R with the <code>ts</code> function. The <code>anchor</code> argument is set to the value of CPI before the start of the fan chart. This allows a join between the value of the Q1 2013 observation and the fan chart. The <code>fan.col</code> argument is set to a colour palette for shades between <code>tomato</code> and <code>gray90</code>. The final two arguments are set to <code>NULL</code> to suppress the plotting of contour lines at the boundary of each shaded fan and their labels, as per the Bank of England style.</p>
+<p>The fan chart itself is outputted from the <code>fan</code> function,
+where arguments are set to ensure a close resemblance of the R plot to
+that produced by the Bank of England. The first three arguments in the
+<code>fan</code> function called in the above code, provide the
+<code>cpival</code> data to plotted, indicate that the data are a set of
+calculated values (as opposed to simulations) and provide the
+probabilities that correspond to each row of <code>cpival</code> object.
+The next two arguments define the start time and frequency of the data.
+These operate in a similar fashion to those used when defining time
+series in R with the <code>ts</code> function. The <code>anchor</code>
+argument is set to the value of CPI before the start of the fan chart.
+This allows a join between the value of the Q1 2013 observation and the
+fan chart. The <code>fan.col</code> argument is set to a colour palette
+for shades between <code>tomato</code> and <code>gray90</code>. The
+final two arguments are set to <code>NULL</code> to suppress the
+plotting of contour lines at the boundary of each shaded fan and their
+labels, as per the Bank of England style.</p>
 </div>
-<div id="default-fan-chart-plot-" class="section level2">
-<h2 class="hasAnchor">
-<a href="#default-fan-chart-plot-" class="anchor"></a>Default Fan Chart Plot.</h2>
-<p>By default, the <code>fan</code> function treats objects passed to the <code>data</code> argument as simulations from sequential distributions, rather than user-created values corresponding probabilities provided in the <code>probs</code> argument (as above). An alternative plot below, based on simulated data and default style settings in the <code>fan</code> function produces a fan chart with a greater array of coloured fans with labels and contour lines alongside selected percentiles of the future distribution. To illustrate we can simulate 10,000 values from the future split-normal distribution parameters from Q1 2013 in the <code>boe0</code> data frame using the <code>rsplitnorm</code>function</p>
+<div class="section level2">
+<h2 id="default-fan-chart-plot-">Default Fan Chart Plot.<a class="anchor" aria-label="anchor" href="#default-fan-chart-plot-"></a>
+</h2>
+<p>By default, the <code>fan</code> function treats objects passed to
+the <code>data</code> argument as simulations from sequential
+distributions, rather than user-created values corresponding
+probabilities provided in the <code>probs</code> argument (as above). An
+alternative plot below, based on simulated data and default style
+settings in the <code>fan</code> function produces a fan chart with a
+greater array of coloured fans with labels and contour lines alongside
+selected percentiles of the future distribution. To illustrate we can
+simulate 10,000 values from the future split-normal distribution
+parameters from Q1 2013 in the <code>boe0</code> data frame using the
+<code>rsplitnorm</code>function</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#simulate future values</span>
-<span class="va">cpisim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, nrow <span class="op">=</span> <span class="fl">10000</span>, ncol <span class="op">=</span> <span class="va">k</span><span class="op">)</span>
+<span class="va">cpisim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, nrow <span class="op">=</span> <span class="fl">10000</span>, ncol <span class="op">=</span> <span class="va">k</span><span class="op">)</span>
 <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">k</span><span class="op">)</span>
    <span class="va">cpisim</span><span class="op">[</span>, <span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dsplitnorm.html">rsplitnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10000</span>, mode <span class="op">=</span> <span class="va">boe0</span><span class="op">$</span><span class="va">mode</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, sd <span class="op">=</span> <span class="va">boe0</span><span class="op">$</span><span class="va">uncertainty</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, skew <span class="op">=</span> <span class="va">boe0</span><span class="op">$</span><span class="va">skew</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></code></pre></div>
-<p>The fan chart based on the simulations in <code>cpisim</code> can then be added to the plot;</p>
+<p>The fan chart based on the simulations in <code>cpisim</code> can
+then be added to the plot;</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># truncate cpi series</span>
-<span class="va">cpi0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html">ts</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html">time</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">)</span><span class="op">&lt;</span><span class="fl">2013</span><span class="op">]</span>, start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/start.html">start</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">)</span>, frequency<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html">frequency</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">)</span> <span class="op">)</span>
+<span class="va">cpi0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">time</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">)</span><span class="op">&lt;</span><span class="fl">2013</span><span class="op">]</span>, start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">start</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">)</span>, frequency<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">frequency</a></span><span class="op">(</span><span class="va">cpi</span><span class="op">)</span> <span class="op">)</span>
 
 <span class="co"># past data</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cpi0</span>, type <span class="op">=</span> <span class="st">"l"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">y0</span> <span class="op">-</span> <span class="fl">5</span>, <span class="va">y0</span> <span class="op">+</span> <span class="fl">3.25</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">cpi0</span>, type <span class="op">=</span> <span class="st">"l"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">y0</span> <span class="op">-</span> <span class="fl">5</span>, <span class="va">y0</span> <span class="op">+</span> <span class="fl">3.25</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># add fan</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cpisim</span>, start <span class="op">=</span> <span class="va">y0</span>, frequency <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
 <p><img src="02_boe_files/figure-html/unnamed-chunk-6-1.png" width="576"><!-- <a href="http://gjabel.files.wordpress.com/2013/04/boe2.png"><img class="aligncenter size-full wp-image-1191" src="http://gjabel.files.wordpress.com/2013/04/boe2.png" alt="boe2" width="578" height="522" /></a> --></p>
-<p>The <code>fan</code> function calculates the values of 100 equally spaced percentiles of each future distribution when the default <code>data.type = "simulations"</code> is set. This allows 50 fans to be plotted from the <code>heat.colours</code> colour palate, providing a finer level of shading in the representation of future distributions. In addition, lines and labels are provided along each decile. The fan chart does not connect to the last observation as <code>anchor = NULL</code> by default.</p>
+<p>The <code>fan</code> function calculates the values of 100 equally
+spaced percentiles of each future distribution when the default
+<code>data.type = "simulations"</code> is set. This allows 50 fans to be
+plotted from the <code>heat.colours</code> colour palate, providing a
+finer level of shading in the representation of future distributions. In
+addition, lines and labels are provided along each decile. The fan chart
+does not connect to the last observation as <code>anchor = NULL</code>
+by default.</p>
 </div>
   </div>
 
@@ -245,11 +335,13 @@ Bank of England February 2013 CPI Fan Chart. Obtained from Chart 5.3 in <a href=
 
 
       <footer><div class="copyright">
-  <p>Developed by Guy J. Abel.</p>
+  <p></p>
+<p>Developed by Guy J. Abel.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -257,6 +349,8 @@ Bank of England February 2013 CPI Fan Chart. Obtained from Chart 5.3 in <a href=
 
   
 
+
+  
 
   </body>
 </html>

@@ -30,10 +30,10 @@ shinyServer(function(input, output) {
       sliderInput("skew1", paste0(input$year1,": Skewness "), 
                   min = -0.99, max = 0.99, value = 0, step= 0.01)
   })
-  
   output$year2 <- renderUI({
     if(input$cp>=2)
-      sliderInput("year2", h5("Change Point 2:")) 
+      sliderInput("year2", h5("Change Point 2:"),
+                  min = input$year1+1, max = 2030, value = input$year1+1, step= 1, sep="")
   })
   output$mode2 <- renderUI({
     if(input$cp>=2)

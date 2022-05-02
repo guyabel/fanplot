@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/guyabel/fanplot/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/fanplot/actions)
 <!-- badges: end -->
 
-<img src='https://raw.githubusercontent.com/guyabel/fanplot/master/hex/logo_transp.png' align="right" height="180" style="padding-left: 20px; padding-bottom: 20px;" />
+<img src='https://raw.githubusercontent.com/guyabel/fanplot/master/hex/logo_transp.png' align="right" height="200" style="float:right; height:200px;"/>
 
 Visualise sequential distributions using a range of plotting styles. Sequential distribution data can be input as either simulations or values corresponding to percentiles over time. Plots are added to existing graphic devices using the fan function. Users can choose from four different styles, including fan chart type plots, where a set of coloured polygon, with shadings corresponding to the percentile values are layered to represent different uncertainty levels.
 

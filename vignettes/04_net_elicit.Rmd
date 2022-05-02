@@ -1,5 +1,5 @@
 ---
-title: "Demonstration of fanplot in an app to elicit expert opinion of future distributions"
+title: "Demonstration of fanplot to elicit expert opinion of future distributions within a shiny app"
 ---
 
 <style>
@@ -18,6 +18,6 @@ title: "Demonstration of fanplot in an app to elicit expert opinion of future di
 </style>
 
 <div class="shiny-app-frame"> 
-<iframe src="https://guyabel.shinyapps.io/net_elicit/">
+<iframe src="https://guyabel.shinyapps.io/net-elicit/">
 </iframe>
 </div>

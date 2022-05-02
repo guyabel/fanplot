@@ -14,7 +14,7 @@ superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https:/
 [![R-CMD-check](https://github.com/guyabel/fanplot/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/fanplot/actions)
 <!-- badges: end -->
 
-<img src='https://raw.githubusercontent.com/guyabel/fanplot/master/hex/logo_transp.png' align="right" height="180" style="padding-left: 20px; padding-bottom: 20px;" />
+<img src='https://raw.githubusercontent.com/guyabel/fanplot/master/hex/logo_transp.png' align="right" height="200" style="float:right; height:200px;"/>
 
 Visualise sequential distributions using a range of plotting styles.
 Sequential distribution data can be input as either simulations or

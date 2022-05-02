@@ -1,5 +1,5 @@
-pandoc: 2.11.4
-pkgdown: 1.6.1
+pandoc: 2.17.1.1
+pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   01_r_journal: 01_r_journal.html
@@ -7,5 +7,5 @@ articles:
   03_sv_fan: 03_sv_fan.html
   04_net_elicit: 04_net_elicit.html
   fanplot: fanplot.html
-last_built: 2021-08-25T13:19Z
+last_built: 2022-05-02T05:04Z
 

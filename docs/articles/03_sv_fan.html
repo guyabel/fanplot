@@ -32,6 +32,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,18 +46,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fanplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/fanplot.html">Get started</a>
 </li>
@@ -63,7 +59,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -79,7 +75,7 @@
       <a href="../articles/03_sv_fan.html">Gallary of fanplot styles</a>
     </li>
     <li>
-      <a href="../articles/04_net_elicit.html">Demonstration of fanplot in an app to elicit expert opinion of future distributions</a>
+      <a href="../articles/04_net_elicit.html">Demonstration of fanplot to elicit expert opinion of future distributions within a shiny app</a>
     </li>
   </ul>
 </li>
@@ -89,19 +85,19 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/guyabel/fanplot/">
+  <a href="https://github.com/guyabel/fanplot/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://twitter.com/guyabelguyabel">
+  <a href="https://twitter.com/guyabelguyabel" class="external-link">
     <span class="fab fa-twitter fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://guyabel.com">
+  <a href="https://guyabel.com" class="external-link">
     <span class="fas fa-blog fa-lg"></span>
      
   </a>
@@ -116,172 +112,180 @@
 
       
 
-      </header><script src="03_sv_fan_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Gallary of fanplot styles</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/guyabel/fanplot/blob/master/vignettes/03_sv_fan.Rmd"><code>vignettes/03_sv_fan.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/guyabel/fanplot/blob/HEAD/vignettes/03_sv_fan.Rmd" class="external-link"><code>vignettes/03_sv_fan.Rmd</code></a></small>
       <div class="hidden name"><code>03_sv_fan.Rmd</code></div>
 
     </div>
 
     
     
-<div id="demo-file" class="section level1">
-<h1 class="hasAnchor">
-<a href="#demo-file" class="anchor"></a>Demo file</h1>
-<p>Below are some examples of different plotting styles to represent uncertainty in time series data. All plots are based on the <code>th.mcmc</code> data, the estimated posterior distributions of the volatility in daily returns from the Pound/Dollar exchange rate from 02/10/1981 to 28/6/1985. To run the demo file from your R console (ensure fanplot, zoo, tsbugs, RColorBrewer and colorspace packages are all installed beforehand). Note, <code>tsbugs</code> is no longer on CRAN - install with <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("guyabel/tsbugs")</a></code></p>
+<div class="section level2">
+<h2 id="demo-file">Demo file<a class="anchor" aria-label="anchor" href="#demo-file"></a>
+</h2>
+<p>Below are some examples of different plotting styles to represent
+uncertainty in time series data. All plots are based on the
+<code>th.mcmc</code> data, the estimated posterior distributions of the
+volatility in daily returns from the Pound/Dollar exchange rate from
+02/10/1981 to 28/6/1985. To run the demo file from your R console
+(ensure fanplot, zoo, tsbugs, RColorBrewer and colorspace packages are
+all installed beforehand). Note, <code>tsbugs</code> is no longer on
+CRAN - install with
+<code>devtools::install_github("guyabel/tsbugs")</code></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># if you want plots in separate graphic devices do not run this first line...</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># run demo</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/demo.html">demo</a></span><span class="op">(</span><span class="va">sv_fan</span>, package <span class="op">=</span> <span class="st">"fanplot"</span>, ask <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/demo.html" class="external-link">demo</a></span><span class="op">(</span><span class="va">sv_fan</span>, package <span class="op">=</span> <span class="st">"fanplot"</span>, ask <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-1-1.png" width="960"></p>
 <p>Below is the code and the individual plots in the demo file</p>
-<div id="main-arguments" class="section level3">
-<h3 class="hasAnchor">
-<a href="#main-arguments" class="anchor"></a>Main arguments</h3>
+<div class="section level4">
+<h4 id="main-arguments">Main arguments<a class="anchor" aria-label="anchor" href="#main-arguments"></a>
+</h4>
 <p>Default plot</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/">fanplot</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/" class="external-link">fanplot</a></span><span class="op">)</span>
 <span class="co"># trim margins</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">1.1</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">1.1</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># empty plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Defaults"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Defaults"</span><span class="op">)</span>
 <span class="co"># add fan</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-2-1.png" width="960"></p>
 <p>Create a coarser fan</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Coarser Palette"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Coarser Palette"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-3-1.png" width="960"></p>
 <p>Fan with no lines and text</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Plain"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Plain"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, ln <span class="op">=</span> <span class="cn">NULL</span>, rlab <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-4-1.png" width="960"></p>
 <p>Change contour line colours</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Black Contour Lines"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, ln.col <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Black Contour Lines"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, ln.col <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-5-1.png" width="960"></p>
 <p>Transparent fan fill to leave only percentile contour lines</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Transparent Fill, Black Lines"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Transparent Fill, Black Lines"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, alpha<span class="op">=</span><span class="fl">0</span>, ln.col<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-6-1.png" width="960"></p>
 <p>Prediction intervals</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">985</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Prediction Interval"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">985</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Prediction Interval"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, type <span class="op">=</span> <span class="st">"interval"</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-7-1.png" width="960"></p>
 </div>
-<div id="labels" class="section level3">
-<h3 class="hasAnchor">
-<a href="#labels" class="anchor"></a>Labels</h3>
+<div class="section level4">
+<h4 id="labels">Labels<a class="anchor" aria-label="anchor" href="#labels"></a>
+</h4>
 <p>Include left labels</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">40</span>, <span class="fl">985</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Include Left Labels"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">40</span>, <span class="fl">985</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Include Left Labels"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, type <span class="op">=</span> <span class="st">"interval"</span>, llab <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-8-1.png" width="960"></p>
 <p>Selected right labels</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"User Selected Labels"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, llab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.5</span>,<span class="fl">0.9</span><span class="op">)</span>, rlab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.2</span>,<span class="fl">0.5</span>,<span class="fl">0.8</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"User Selected Labels"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, llab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.5</span>,<span class="fl">0.9</span><span class="op">)</span>, rlab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>,<span class="fl">0.5</span>,<span class="fl">0.8</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-9-1.png" width="960"></p>
 <p>Change prefixes of labels</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">995</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"User Named Labels"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">50</span>, <span class="fl">995</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"User Named Labels"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, type <span class="op">=</span> <span class="st">"interval"</span>, llab <span class="op">=</span> <span class="cn">TRUE</span>, rcex <span class="op">=</span> <span class="fl">0.6</span>,
     upplab <span class="op">=</span> <span class="st">"Upp "</span>, lowlab <span class="op">=</span> <span class="st">"Low "</span>, medlab<span class="op">=</span><span class="st">"Med"</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-10-1.png" width="960"></p>
 </div>
-<div id="colour" class="section level3">
-<h3 class="hasAnchor">
-<a href="#colour" class="anchor"></a>Colour</h3>
+<div class="section level4">
+<h4 id="colour">Colour<a class="anchor" aria-label="anchor" href="#colour"></a>
+</h4>
 <p>Different colour scheme</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"User Colour Ramp"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
-    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"royalblue"</span>, <span class="st">"grey"</span>, <span class="st">"white"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"User Colour Ramp"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
+    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html" class="external-link">colorRampPalette</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"royalblue"</span>, <span class="st">"grey"</span>, <span class="st">"white"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-11-1.png" width="960"></p>
 <p>Colours from the <code>colorspace</code> package</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://colorspace.R-Forge.R-project.org/">colorspace</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"colorspace Library: diverge_hcl Colour Ramp"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://colorspace.R-Forge.R-project.org/" class="external-link">colorspace</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"colorspace Library: diverge_hcl Colour Ramp"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span>, fan.col <span class="op">=</span> <span class="va">diverge_hcl</span><span class="op">)</span> </code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-12-1.png" width="960"></p>
 <p>Second <code>colorspace</code> colours example</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"colorspace Library: sequential_hcl Colour Ramp"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"colorspace Library: sequential_hcl Colour Ramp"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span>, fan.col <span class="op">=</span> <span class="va">sequential_hcl</span> <span class="op">)</span> </code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-13-1.png" width="960"></p>
 <p>Colours from the <code>RColorBrewer</code> package</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"RColorBrewer Library: Accent Colour Ramp"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"RColorBrewer Library: Accent Colour Ramp"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span>, 
-    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span><span class="fl">8</span>,<span class="st">"Accent"</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span> </code></pre></div>
+    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html" class="external-link">colorRampPalette</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html" class="external-link">brewer.pal</a></span><span class="op">(</span><span class="fl">8</span>,<span class="st">"Accent"</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span> </code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-14-1.png" width="960"></p>
 <p>Second <code>RColorBrewer</code> example</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"RColorBrewer Library: Oranges Colour Ramp"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"RColorBrewer Library: Oranges Colour Ramp"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span>, 
-    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span><span class="fl">9</span>,<span class="st">"Oranges"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span> </code></pre></div>
+    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html" class="external-link">colorRampPalette</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html" class="external-link">brewer.pal</a></span><span class="op">(</span><span class="fl">9</span>,<span class="st">"Oranges"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span> </code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-15-1.png" width="960"></p>
 <p>Third <code>RColorBrewer</code> example</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"RColorBrewer Library: Spectral Colour Ramp"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"RColorBrewer Library: Spectral Colour Ramp"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span>, 
-    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span><span class="fl">11</span>,<span class="st">"Spectral"</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span> </code></pre></div>
+    fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html" class="external-link">colorRampPalette</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html" class="external-link">brewer.pal</a></span><span class="op">(</span><span class="fl">11</span>,<span class="st">"Spectral"</span><span class="op">)</span><span class="op">)</span> <span class="op">)</span> </code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-16-1.png" width="960"></p>
 </div>
-<div id="irregular-time-series" class="section level3">
-<h3 class="hasAnchor">
-<a href="#irregular-time-series" class="anchor"></a>Irregular time series</h3>
+<div class="section level4">
+<h4 id="irregular-time-series">Irregular time series<a class="anchor" aria-label="anchor" href="#irregular-time-series"></a>
+</h4>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://zoo.R-Forge.R-project.org/">zoo</a></span><span class="op">)</span>
-<span class="va">th.mcmc2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/zoo/man/zoo.html">zoo</a></span><span class="op">(</span><span class="va">th.mcmc</span>, order.by<span class="op">=</span><span class="va">svpdx</span><span class="op">$</span><span class="va">date</span><span class="op">)</span> 
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">th.mcmc2</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, type<span class="op">=</span><span class="st">"n"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"X-Axis Based On (Irregular) Dates"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://zoo.R-Forge.R-project.org/" class="external-link">zoo</a></span><span class="op">)</span>
+<span class="va">th.mcmc2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/zoo/man/zoo.html" class="external-link">zoo</a></span><span class="op">(</span><span class="va">th.mcmc</span>, order.by<span class="op">=</span><span class="va">svpdx</span><span class="op">$</span><span class="va">date</span><span class="op">)</span> 
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">th.mcmc2</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, type<span class="op">=</span><span class="st">"n"</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"X-Axis Based On (Irregular) Dates"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc2</span>, rcex<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-17-1.png" width="960"></p>
 </div>
-<div id="spaghetti-plot" class="section level3">
-<h3 class="hasAnchor">
-<a href="#spaghetti-plot" class="anchor"></a>Spaghetti plot</h3>
+<div class="section level4">
+<h4 id="spaghetti-plot">Spaghetti plot<a class="anchor" aria-label="anchor" href="#spaghetti-plot"></a>
+</h4>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Default Spaghetti Plots"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Default Spaghetti Plots"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, style <span class="op">=</span> <span class="st">"spaghetti"</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-18-1.png" width="960"></p>
 <p>More transparency in lines</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Less Transparent Spaghetti Plots"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Less Transparent Spaghetti Plots"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, style <span class="op">=</span> <span class="st">"spaghetti"</span>, alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-19-1.png" width="960"></p>
 <p>More lines, red</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"More Lines, Red"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"More Lines, Red"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, style <span class="op">=</span> <span class="st">"spaghetti"</span>, ln.col <span class="op">=</span> <span class="st">"red"</span>, n.spag <span class="op">=</span> <span class="fl">100</span>, alpha <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-20-1.png" width="960"></p>
 </div>
-<div id="overlaying-fans" class="section level3">
-<h3 class="hasAnchor">
-<a href="#overlaying-fans" class="anchor"></a>Overlaying fans</h3>
+<div class="section level4">
+<h4 id="overlaying-fans">Overlaying fans<a class="anchor" aria-label="anchor" href="#overlaying-fans"></a>
+</h4>
 <p>Overlay spaghetti on transparent fan</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Spaghetti and Fan"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, main<span class="op">=</span><span class="st">"Spaghetti and Fan"</span><span class="op">)</span>
 <span class="co"># transparent fan with visible lines</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, ln<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">50</span>, <span class="fl">95</span><span class="op">)</span>, llab<span class="op">=</span><span class="cn">TRUE</span>, alpha<span class="op">=</span><span class="fl">0</span>, ln.col<span class="op">=</span><span class="st">"orange"</span> <span class="op">)</span>
+<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, ln<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">50</span>, <span class="fl">95</span><span class="op">)</span>, llab<span class="op">=</span><span class="cn">TRUE</span>, alpha<span class="op">=</span><span class="fl">0</span>, ln.col<span class="op">=</span><span class="st">"orange"</span> <span class="op">)</span>
 <span class="co"># spaghetti lines</span>
 <span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, style<span class="op">=</span><span class="st">"spaghetti"</span><span class="op">)</span></code></pre></div>
 <p><img src="03_sv_fan_files/figure-html/unnamed-chunk-21-1.png" width="960"></p>
 </div>
-<div id="saving" class="section level3">
-<h3 class="hasAnchor">
-<a href="#saving" class="anchor"></a>Saving</h3>
+<div class="section level4">
+<h4 id="saving">Saving<a class="anchor" aria-label="anchor" href="#saving"></a>
+</h4>
 <p>Save as png</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># dev.copy(png, file = "svplots.png", width=10, height=50, units="in", res=400)</span>
@@ -301,11 +305,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Guy J. Abel.</p>
+  <p></p>
+<p>Developed by Guy J. Abel.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -313,6 +319,8 @@
 
   
 
+
+  
 
   </body>
 </html>

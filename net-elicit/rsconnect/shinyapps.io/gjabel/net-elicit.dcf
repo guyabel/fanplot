@@ -1,0 +1,13 @@
+name: net-elicit
+title: net-elicit
+username:
+account: gjabel
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6212869
+bundleId: 5858591
+url: https://guyabel.shinyapps.io/net-elicit/
+when: 1651463429.82543
+lastSyncTime: 1651463429.82544
+asMultiple: FALSE
+asStatic: FALSE
