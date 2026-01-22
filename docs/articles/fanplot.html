@@ -4,7 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="fanplot">
 <title>The fanplot package for R • fanplot</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -12,12 +13,11 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="The fanplot package for R">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="The fanplot package for R">
 <meta property="og:description" content="fanplot">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -31,98 +31,84 @@
   gtag('config', 'G-2XE3QBSNZJ');
 </script>
 </head>
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">fanplot</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.0.0</span>
-      </span>
-    </div>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">fanplot</a>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../articles/fanplot.html">Get started</a>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.0.0</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="active nav-item">
+  <a class="nav-link" href="../articles/fanplot.html">Get started</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/01_r_journal.html">R Journal Article</a>
-    </li>
-    <li>
-      <a href="../articles/02_boe.html">Bank of England Fan Charts in R</a>
-    </li>
-    <li>
-      <a href="../articles/03_sv_fan.html">Gallary of fanplot styles</a>
-    </li>
-    <li>
-      <a href="../articles/04_net_elicit.html">Demonstration of fanplot to elicit expert opinion of future distributions within a shiny app</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/guyabel/fanplot/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="https://twitter.com/guyabelguyabel" class="external-link">
-    <span class="fab fa-twitter fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="https://guyabel.com" class="external-link">
-    <span class="fas fa-blog fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
-</div>
-<!--/.nav-collapse -->
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/01_r_journal.html">R Journal Article</a>
+    <a class="dropdown-item" href="../articles/02_boe.html">Bank of England Fan Charts in R</a>
+    <a class="dropdown-item" href="../articles/03_sv_fan.html">Gallary of fanplot styles</a>
+    <a class="dropdown-item" href="../articles/04_net_elicit.html">Demonstration of fanplot in an app to elicit expert opinion of future distributions</a>
   </div>
-<!--/.container -->
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/guyabel/fanplot/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://twitter.com/guyabelguyabel">
+    <span class="fab fa fab fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://guyabel.com">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.navbar -->
 
-      
+    
+  </div>
+</nav><div class="container template-article">
 
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>The fanplot package for R</h1>
+
+
+
+<div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>The fanplot package for R</h1>
                         <h4 data-toc-skip class="author">Guy J.
 Abel</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/guyabel/fanplot/blob/HEAD/vignettes/fanplot.Rmd" class="external-link"><code>vignettes/fanplot.Rmd</code></a></small>
-      <div class="hidden name"><code>fanplot.Rmd</code></div>
-
+      <div class="d-none name"><code>fanplot.Rmd</code></div>
     </div>
 
     
@@ -156,12 +142,12 @@ to MCMC simulations and (945) columns corresponding to each <span class="math in
 distribution of <span class="math inline">\(\theta_t\)</span> can be
 visualised using the fanplot package via,</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/" class="external-link">fanplot</a></span><span class="op">)</span>
-<span class="co"># empty plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, main<span class="op">=</span><span class="st">"Percentiles"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.5</span>, <span class="fl">1.5</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># add fan</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/" class="external-link">fanplot</a></span><span class="op">)</span></span>
+<span><span class="co"># empty plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, main <span class="op">=</span> <span class="st">"Percentiles"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.5</span>, <span class="fl">1.5</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># add fan</span></span>
+<span><span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fanplot_files/figure-html/unnamed-chunk-1-1.png" width="960"></p>
 <!-- <a href="http://gjabel.files.wordpress.com/2012/08/fanplot-sv1.png"><img class="aligncenter size-full wp-image-1236" src="http://gjabel.files.wordpress.com/2012/08/fanplot-sv1.png" alt="fanplot-sv1" width="640" height="640" /></a> -->
 <p>The <code><a href="../reference/fan.html">fan()</a></code> function calculates the values of 100 equally
@@ -180,11 +166,11 @@ Consequently, the fan chart comprises of 3 different shades, running
 from the darkest shade for the 50th prediction interval to the lightest
 for the 95th prediction interval.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># empty plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, main<span class="op">=</span><span class="st">"Prediction Intervals"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.5</span>, <span class="fl">1.5</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># add fan</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span>, type <span class="op">=</span> <span class="st">"interval"</span>, llab<span class="op">=</span><span class="cn">TRUE</span>, rcex<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># empty plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, main <span class="op">=</span> <span class="st">"Prediction Intervals"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.5</span>, <span class="fl">1.5</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># add fan</span></span>
+<span><span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span>, type <span class="op">=</span> <span class="st">"interval"</span>, llab <span class="op">=</span> <span class="cn">TRUE</span>, rcex <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fanplot_files/figure-html/unnamed-chunk-2-1.png" width="960"></p>
 <!-- <a href="http://gjabel.files.wordpress.com/2012/08/fanplot-sv2.png"><img class="aligncenter size-full wp-image-1231" src="http://gjabel.files.wordpress.com/2012/08/fanplot-sv2.png" alt="fanplot-sv2" width="640" height="640" /></a> -->
 <p>Contour lines are overlayed for the upper and lower bounds of each
@@ -210,11 +196,12 @@ can be obtained by supplying a <code>colorRampPalette</code> to the
 <code>fan.col</code> argument. For example, a new palette running from
 blue to white, via grey can be passed using;</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># empty plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.5</span>, <span class="fl">1.5</span><span class="op">)</span>,  main<span class="op">=</span><span class="st">"Alternative Colour Scheme"</span><span class="op">)</span>
-
-<span class="co"># add fan</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span>, rlab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">20</span>,<span class="fl">80</span>,<span class="fl">15</span><span class="op">)</span>, llab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>,<span class="fl">50</span>,<span class="fl">90</span><span class="op">)</span>, fan.col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html" class="external-link">colorRampPalette</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"royalblue"</span>, <span class="st">"grey"</span>, <span class="st">"white"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># empty plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.5</span>, <span class="fl">1.5</span><span class="op">)</span>, main <span class="op">=</span> <span class="st">"Alternative Colour Scheme"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># add fan</span></span>
+<span><span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">th.mcmc</span>, rlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">80</span>, <span class="fl">15</span><span class="op">)</span>, llab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">50</span>, <span class="fl">90</span><span class="op">)</span>, fan.col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html" class="external-link">colorRampPalette</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"royalblue"</span>,</span>
+<span>    <span class="st">"grey"</span>, <span class="st">"white"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fanplot_files/figure-html/unnamed-chunk-3-1.png" width="960"></p>
 <!-- <a href="http://gjabel.files.wordpress.com/2012/08/fanplot-sv3.png"><img class="aligncenter size-full wp-image-1232" src="http://gjabel.files.wordpress.com/2012/08/fanplot-sv3.png" alt="fanplot-sv3" width="640" height="640" /></a> -->
 <p>Alternative labels are specified using the <code>rlab</code> and
@@ -228,14 +215,14 @@ of possible future trajectories or past estimates. For example using the
 <code>th.mcmc</code> object, 20 random sets of <span class="math inline">\(\theta_t\)</span> can be plotted when setting the
 argument <code>style = "spaghetti"</code>;</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># empty plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, main<span class="op">=</span><span class="st">"Spaghetti Plot"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># transparent fan with visible lines</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, ln<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">50</span>, <span class="fl">95</span><span class="op">)</span>, llab<span class="op">=</span><span class="cn">TRUE</span>, alpha<span class="op">=</span><span class="fl">0</span>, ln.col<span class="op">=</span><span class="st">"orange"</span><span class="op">)</span>
-
-<span class="co"># spaghetti lines</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, style<span class="op">=</span><span class="st">"spaghetti"</span>, n.spag<span class="op">=</span><span class="fl">20</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># empty plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, main <span class="op">=</span> <span class="st">"Spaghetti Plot"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># transparent fan with visible lines</span></span>
+<span><span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, ln <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">50</span>, <span class="fl">95</span><span class="op">)</span>, llab <span class="op">=</span> <span class="cn">TRUE</span>, alpha <span class="op">=</span> <span class="fl">0</span>, ln.col <span class="op">=</span> <span class="st">"orange"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># spaghetti lines</span></span>
+<span><span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">th.mcmc</span>, style <span class="op">=</span> <span class="st">"spaghetti"</span>, n.spag <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fanplot_files/figure-html/unnamed-chunk-4-1.png" width="960"></p>
 <!-- <a href="http://gjabel.files.wordpress.com/2012/08/fanplot-sv4.png"><img class="aligncenter size-full wp-image-1233" src="http://gjabel.files.wordpress.com/2012/08/fanplot-sv4.png" alt="fanplot-sv4" width="640" height="640" /></a> -->
 <p>The spaghetti lines are superimposed on a fan chart in order to
@@ -256,35 +243,34 @@ package a model for the time series for net migration to the United
 Kingdom (contained in the <code>ips</code> data frame of the fanplot
 package) can be fitted.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#create time series</span>
-<span class="va">net</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="va">ips</span><span class="op">$</span><span class="va">net</span>, start <span class="op">=</span> <span class="fl">1975</span><span class="op">)</span>
-
-<span class="co">#fit model</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/" class="external-link">forecast</a></span><span class="op">)</span>
-<span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://pkg.robjhyndman.com/forecast/reference/auto.arima.html" class="external-link">auto.arima</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span>
-<span class="va">m</span></code></pre></div>
-<pre><code><span class="co">## Series: net </span>
-<span class="co">## ARIMA(1,1,2) with drift </span>
-<span class="co">## </span>
-<span class="co">## Coefficients:</span>
-<span class="co">##           ar1      ma1      ma2   drift</span>
-<span class="co">##       -0.2301  -0.0851  -0.6734  6.7625</span>
-<span class="co">## s.e.   0.3664   0.3571   0.1898  1.3961</span>
-<span class="co">## </span>
-<span class="co">## sigma^2 = 1343:  log likelihood = -184.28</span>
-<span class="co">## AIC=378.56   AICc=380.5   BIC=386.62</span></code></pre>
+<code class="sourceCode R"><span><span class="co"># create time series</span></span>
+<span><span class="va">net</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html" class="external-link">ts</a></span><span class="op">(</span><span class="va">ips</span><span class="op">$</span><span class="va">net</span>, start <span class="op">=</span> <span class="fl">1975</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># fit model</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/forecast/" class="external-link">forecast</a></span><span class="op">)</span></span>
+<span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://pkg.robjhyndman.com/forecast/reference/auto.arima.html" class="external-link">auto.arima</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span></span>
+<span><span class="va">m</span></span></code></pre></div>
+<pre><code><span><span class="co">## Series: net </span></span>
+<span><span class="co">## ARIMA(1,1,2) with drift </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##           ar1      ma1      ma2   drift</span></span>
+<span><span class="co">##       -0.2301  -0.0851  -0.6734  6.7625</span></span>
+<span><span class="co">## s.e.   0.3664   0.3571   0.1898  1.3961</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## sigma^2 = 1343:  log likelihood = -184.28</span></span>
+<span><span class="co">## AIC=378.56   AICc=380.5   BIC=386.62</span></span></code></pre>
 <p>We may then simulate 1000 values from the selected model using the
 <code>simulate.Arima</code> function, and plot the results.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, nrow<span class="op">=</span><span class="fl">1000</span>, ncol<span class="op">=</span><span class="fl">5</span><span class="op">)</span>
-<span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1000</span><span class="op">)</span>
-  <span class="va">mm</span><span class="op">[</span><span class="va">i</span>,<span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">m</span>, nsim<span class="op">=</span><span class="fl">5</span><span class="op">)</span>
-
-<span class="co"># empty plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">net</span>, main<span class="op">=</span><span class="st">"UK Net Migration"</span>, xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1975</span>,<span class="fl">2020</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">100</span>,<span class="fl">300</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># add fan</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">mm</span>, start<span class="op">=</span><span class="fl">2013</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, nrow <span class="op">=</span> <span class="fl">1000</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">1000</span><span class="op">)</span> <span class="va">mm</span><span class="op">[</span><span class="va">i</span>, <span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/simulate.html" class="external-link">simulate</a></span><span class="op">(</span><span class="va">m</span>, nsim <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># empty plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">net</span>, main <span class="op">=</span> <span class="st">"UK Net Migration"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">2020</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">100</span>, <span class="fl">300</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># add fan</span></span>
+<span><span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">mm</span>, start <span class="op">=</span> <span class="fl">2013</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fanplot_files/figure-html/unnamed-chunk-6-1.png" width="960"></p>
 <!-- <a href="http://gjabel.files.wordpress.com/2012/08/fanplot-ips1.png"><img class="aligncenter size-full wp-image-1234" src="http://gjabel.files.wordpress.com/2012/08/fanplot-ips1.png" alt="fanplot-ips1" width="640" height="640" /></a> -->
 <p>Users might want to connect the fan with the past data. This can be
@@ -295,41 +281,35 @@ argument. Alternative contour lines (from the default median, 50th, 80th
 and 95th percentiles for interval fans) are added using the
 <code>ln</code> argument.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># empty plot</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">net</span>, main<span class="op">=</span><span class="st">"UK Net Migration"</span>, xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1975</span>,<span class="fl">2020</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">100</span>,<span class="fl">300</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># add fan</span>
-<span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">mm</span>, start<span class="op">=</span><span class="fl">2013</span>, anchor<span class="op">=</span><span class="va">net</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">time</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span><span class="op">==</span><span class="fl">2012</span><span class="op">]</span>, type<span class="op">=</span><span class="st">"interval"</span>, probs<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">95</span>, <span class="fl">5</span><span class="op">)</span>, ln<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">80</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># empty plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">net</span>, main <span class="op">=</span> <span class="st">"UK Net Migration"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">2020</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">100</span>, <span class="fl">300</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># add fan</span></span>
+<span><span class="fu"><a href="../reference/fan.html">fan</a></span><span class="op">(</span><span class="va">mm</span>, start <span class="op">=</span> <span class="fl">2013</span>, anchor <span class="op">=</span> <span class="va">net</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/stats/time.html" class="external-link">time</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span> <span class="op">==</span> <span class="fl">2012</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">"interval"</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">5</span>,</span>
+<span>    <span class="fl">95</span>, <span class="fl">5</span><span class="op">)</span>, ln <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">80</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fanplot_files/figure-html/unnamed-chunk-7-1.png" width="960"></p>
 <!-- <a href="http://gjabel.files.wordpress.com/2012/08/fanplot-ips2.png"><img class="aligncenter size-full wp-image-1235" src="http://gjabel.files.wordpress.com/2012/08/fanplot-ips2.png" alt="fanplot-ips2" width="640" height="640" /></a> -->
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
+    <footer><div class="pkgdown-footer-left">
   <p></p>
 <p>Developed by Guy J. Abel.</p>
 </div>
 
-<div class="pkgdown">
+<div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-
 
   
 

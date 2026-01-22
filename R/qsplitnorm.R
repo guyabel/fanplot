@@ -36,7 +36,7 @@ function(p, mode = 0, sd = 1, skew = 0, sd1 = NULL, sd2 = NULL) {
   p <- psplitnorm(mode, mode = mode, sd1 = sd1, sd2 = sd2) 
   alpha1 <- alpha <= p
   alpha2 <- alpha > p
-  f[alpha1] <- (mode[alpha1] + sd1[alpha1] * qnorm( alpha[alpha1]/(c[alpha1] * sqrt(2 * pi) * sd1[alpha1])))
-  f[alpha2] <- (mode[alpha2] + sd2[alpha2] * qnorm((alpha[alpha2]+ c[alpha2] * sqrt(2 * pi) * sd2[alpha2] - 1)/(c[alpha2] * sqrt(2 * pi) * sd2[alpha2])))
+  f[alpha1] <- (mode[alpha1] + sd1[alpha1] * stats::qnorm( alpha[alpha1]/(c[alpha1] * sqrt(2 * pi) * sd1[alpha1])))
+  f[alpha2] <- (mode[alpha2] + sd2[alpha2] * stats::qnorm((alpha[alpha2]+ c[alpha2] * sqrt(2 * pi) * sd2[alpha2] - 1)/(c[alpha2] * sqrt(2 * pi) * sd2[alpha2])))
   f
 }

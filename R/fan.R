@@ -2,7 +2,7 @@ fan <-
   function(data = NULL, data.type="simulations", style = "fan", type = "percentile",
            probs = if(type=="percentile") seq(0.01, 0.99, 0.01) else c(0.5, 0.8, 0.95), 
            start = 1, frequency = 1, anchor = NULL, anchor.time=NULL,
-           fan.col = heat.colors, alpha = if (style == "spaghetti") 0.5 else 1, 
+           fan.col = grDevices::heat.colors, alpha = if (style == "spaghetti") 0.5 else 1, 
            n.fan = NULL,
            ln = if(length(probs)<10) probs else 
              probs[round(probs,2) %in% round(seq(0.1, 0.9, 0.1),2)],
@@ -31,7 +31,7 @@ fan <-
     ##
     ##data classes
     ##
-    if(is(data, "mts")[1]){
+    if(methods::is(data, "mts")[1]){
       start<-start(data)[1]
       frequency<-frequency(data)
     }
@@ -59,7 +59,7 @@ fan <-
       #work out quantiles
       if(data.type=="simulations"){
         pp<-as.matrix(data)
-        pp<-apply(pp,2,quantile,probs=p)
+        pp<-apply(pp,2,stats::quantile,probs=p)
       }
       if(data.type=="values"){
         pp<-as.matrix(data)
@@ -86,18 +86,18 @@ fan <-
       
       
       #ts info
-      if(!is(data, "zoo")[1]){
-        ppts <- ts(pp, start = start, frequency = frequency)
-        tt<-time(ppts)
+      if(!methods::is(data, "zoo")[1]){
+        ppts <- stats::ts(pp, start = start, frequency = frequency)
+        tt<-stats::time(ppts)
         tt<-as.numeric(tt)
         if(!is.null(anchor)){
-          ppts <- ts(pp, start = time(lag(ppts))[1], frequency = frequency)
-          tt <- time(ppts)
+          ppts <- stats::ts(pp, start = stats::time(stats::lag(ppts))[1], frequency = frequency)
+          tt <- stats::time(ppts)
           tt<-as.numeric(tt)
         }
       }
-      if(is(data, "zoo")[1]){
-        tt<-time(data)
+      if(methods::is(data, "zoo")[1]){
+        tt<-stats::time(data)
         if(!is.null(anchor))
           tt<-c(anchor.time,tt)
       }
@@ -112,7 +112,7 @@ fan <-
         fan.col<-fan.col(floor(n/2))
       if(!is.null(n.fan))
         fan.col<-fan.col(n.fan)
-      fan.col<-adjustcolor(fan.col,alpha.f=alpha)
+      fan.col <- grDevices::adjustcolor(fan.col,alpha.f=alpha)
       if(is.null(ln.col))
         ln.col<-fan.col[1]
     }
@@ -124,7 +124,7 @@ fan <-
       fan.fill<-function(ts1, ts2, tt, fan.col="grey"){
         xx <- cbind(tt,rev(tt)) 
         yy <- cbind(as.vector(ts1),rev(as.vector(ts2)))
-        polygon(xx,yy, col=fan.col, border=fan.col)
+        graphics::polygon(x = xx, y = yy, col = fan.col, border = fan.col)
       }
       #plot(cpi, type = "l", xlim = c(y0-5, y0+3), ylim = c(-2, 7))
       #plot(NULL, type = "n", xlim = c(1, 945),  ylim = range(th.mcmc), ylab = "Theta")
@@ -142,7 +142,7 @@ fan <-
       x<-pp[,1]
       for(i in 1:nrow(pp)){
         for(j in 1:floor(n/2)){
-          rect(xleft=tt[i]-0.5*space, ybottom=pp[i,j], xright=tt[i]+0.5*space, ytop=pp[i,n-j+1], col=fan.col[floor(n/2)+1-j], border=fan.col[floor(n/2)+1-j])
+          graphics::rect(xleft=tt[i]-0.5*space, ybottom=pp[i,j], xright=tt[i]+0.5*space, ytop=pp[i,n-j+1], col=fan.col[floor(n/2)+1-j], border=fan.col[floor(n/2)+1-j])
         }
       }
     }
@@ -169,12 +169,12 @@ fan <-
         #plot lines
         if(style=="fan"){
           for(i in match(ln0, p))
-            lines(x=tt, y=pp[,i], col=ln.col)
+            graphics::lines(x=tt, y=pp[,i], col=ln.col)
         }
         if(style=="boxfan"){
           for(i in 1:nrow(pp)){
             for(j in match(ln0, p)){
-              lines(x=tt[i]+c(-0.5,0.5)*space, y=rep(pp[i,j],2), col=ln.col)
+              graphics::lines(x=tt[i]+c(-0.5,0.5)*space, y=rep(pp[i,j],2), col=ln.col)
             }
           }
         }
@@ -202,9 +202,9 @@ fan <-
         rlab<-round(rlab, 5)
         for(i in match(rlab, p)){
           if(style=="fan")
-            text(tt[length(tt)], pp[nrow(pp),i], colnames(pp)[i], pos=rpos, offset=roffset, cex=rcex, col=rcol)
+            graphics::text(tt[length(tt)], pp[nrow(pp),i], colnames(pp)[i], pos=rpos, offset=roffset, cex=rcex, col=rcol)
           if(style=="boxfan")
-            text(tt[length(tt)]+0.5*space, pp[nrow(pp),i], colnames(pp)[i], pos=rpos, offset=roffset, cex=rcex, col=rcol)
+            graphics::text(tt[length(tt)]+0.5*space, pp[nrow(pp),i], colnames(pp)[i], pos=rpos, offset=roffset, cex=rcex, col=rcol)
         }
         if(is.na(sum(match(rlab,p))))
           print("some right labels not plotted as conflict with precentiles given in probs")
@@ -224,9 +224,9 @@ fan <-
           llab<-rlab
         for(i in match(llab, p)){
           if(style=="fan")
-            text(tt[1], pp[1,i],  colnames(pp)[i], pos=lpos, offset=loffset, cex=lcex, col=lcol)
+            graphics::text(tt[1], pp[1,i],  colnames(pp)[i], pos=lpos, offset=loffset, cex=lcex, col=lcol)
           if(style=="boxfan")
-            text(tt[1]-0.5*space, pp[1,i], colnames(pp)[i], pos=lpos, offset=loffset, cex=lcex, col=lcol)
+            graphics::text(tt[1]-0.5*space, pp[1,i], colnames(pp)[i], pos=lpos, offset=loffset, cex=lcex, col=lcol)
         }
         if(is.na(sum(match(llab,p))))
           print("some left labels not plotted as conflict with precentiles given in probs")
@@ -237,28 +237,28 @@ fan <-
     if(style=="fan" | style=="boxfan"){
       if(med.ln==TRUE & data.type=="simulations"){
         pp<-data
-        pm<-apply(pp,2,median)
+        pm<-apply(pp,2,stats::median)
         if(!is.null(anchor))
           pm<-c(anchor,pm)
         if(is.null(med.col))
           med.col<-ln.col
         if(style=="fan"){
-          lines(x=tt, y=pm, col=med.col)
+          graphics::lines(x=tt, y=pm, col=med.col)
         }
         if(style=="boxfan"){
           for(i in 1:nrow(pp)){
             #lines(x=(i-1)/frequency+c(-0.5,0.5)*space, y=rep(pm[i],2), col=med.col)
-            lines(x=tt[i]+c(-0.5,0.5)*space, y=rep(pm[i],2), col=med.col)
+            graphics::lines(x=tt[i]+c(-0.5,0.5)*space, y=rep(pm[i],2), col=med.col)
           }
         }
         if(!is.null(rlab) & style %in% c("fan","spaghetti"))
-          text(tt[length(tt)], pm[length(pm)], medlab, pos=rpos, offset=roffset, cex=rcex, col=rcol)
+          graphics::text(tt[length(tt)], pm[length(pm)], medlab, pos=rpos, offset=roffset, cex=rcex, col=rcol)
         if(!is.null(rlab) & style=="boxfan")
-          text(tt[length(tt)]+0.5*space, pm[length(pm)], medlab, pos=rpos, offset=roffset, cex=rcex, col=rcol)
+          graphics::text(tt[length(tt)]+0.5*space, pm[length(pm)], medlab, pos=rpos, offset=roffset, cex=rcex, col=rcol)
         if(any(llab==TRUE,is.numeric(llab)) & style %in% c("fan","spaghetti"))
-          text(tt[1], pm[1], medlab, pos=lpos, offset=loffset, cex=lcex, col=lcol)
+          graphics::text(tt[1], pm[1], medlab, pos=lpos, offset=loffset, cex=lcex, col=lcol)
         if(any(llab==TRUE,is.numeric(llab)) & style=="boxfan")
-          text(tt[1]-0.5*space, pm[1], medlab, pos=lpos, offset=loffset, cex=lcex, col=lcol)
+          graphics::text(tt[1]-0.5*space, pm[1], medlab, pos=lpos, offset=loffset, cex=lcex, col=lcol)
       }
     }
     
@@ -272,9 +272,9 @@ fan <-
       #add ancohor
       if(!is.null(anchor))
         ps<-cbind(rep(anchor,nrow(ps)),ps)
-      spag.col<-adjustcolor(ln.col,alpha.f=alpha)
+      spag.col <- grDevices::adjustcolor(ln.col,alpha.f=alpha)
       for(i in 1:nrow(ps))
-        lines(x=tt, y=ps[i,], col=spag.col)
+        graphics::lines(x=tt, y=ps[i,], col=spag.col)
     }
     
     ##
@@ -288,12 +288,12 @@ fan <-
       if(!is.null(anchor))
         print("anchor ignored for boxplots plots")
       #single time series to use for at=time 
-      p<-ts(pp[1,], start=start, frequency=frequency)
+      p<-stats::ts(pp[1,], start=start, frequency=frequency)
       #plot(NULL, type = "n", xlim = c(1, 10),  ylim = range(pp), ylab = "Theta")
       for(i in 1:n)
-        boxplot(pp[,i], add=TRUE, at=time(p)[i], boxwex=space, xaxt = "n", yaxt = "n",...)
+        graphics::boxplot(pp[,i], add=TRUE, at=stats::time(p)[i], boxwex=space, xaxt = "n", yaxt = "n",...)
     }
-    box()
+    graphics::box()
   }
 
 

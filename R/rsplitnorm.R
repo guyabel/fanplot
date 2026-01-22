@@ -26,7 +26,7 @@ function(n, mode = 0, sd = 1, skew = 0, sd1 = NULL, sd2 = NULL) {
   }
   if (any(findInterval(skew, c(-1,1), rightmost.closed=TRUE)!=1) )
     stop("skew must be between -1 and 1")
-  u <- runif(n)
+  u <- stats::runif(n)
   f <- qsplitnorm(u, mode = mode, sd = sd, skew = skew, sd1 = sd1, sd2 = sd2)
   f
 }

@@ -2,7 +2,7 @@ fan0 <-
   function(data = NULL, data.type = "simulations", style = "fan", type = "percentile",
            probs = if(type=="percentile") seq(0.01, 0.99, 0.01) else c(0.5, 0.8, 0.95), 
            start = 1, frequency = 1, anchor = NULL, anchor.time=NULL,
-           fan.col = heat.colors, alpha = if (style == "spaghetti") 0.5 else 1, 
+           fan.col = grDevices::heat.colors, alpha = if (style == "spaghetti") 0.5 else 1, 
            n.fan = NULL,
            ln = NULL, ln.col = if(style=="spaghetti") "gray" else NULL, 
            med.ln = if(type=="interval") TRUE else FALSE, med.col= "orange",

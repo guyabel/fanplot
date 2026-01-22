@@ -12,6 +12,7 @@ usethis::use_build_ignore(
 
 roxygen2::roxygenise()
 
+devtools::check(args = "--as-cran")
 devtools::check()
 devtools::build()
 

@@ -34,7 +34,7 @@ function(x, mode = 0, sd = 1, skew = 0, sd1 = NULL, sd2 = NULL) {
   k[] <- x #change name of x to match formula
   k1 <- k <= mode
   k2 <- k > mode
-  f[k1] <- (c[k1] * sqrt(2 * pi) * sd1[k1] * pnorm((k[k1] - mode[k1])/sd1[k1]))
-  f[k2] <- (1 - c[k2] * sqrt(2 * pi) * sd2[k2] * (1 - pnorm((k[k2] - mode[k2])/sd2[k2])))
+  f[k1] <- (c[k1] * sqrt(2 * pi) * sd1[k1] * stats::pnorm((k[k1] - mode[k1])/sd1[k1]))
+  f[k2] <- (1 - c[k2] * sqrt(2 * pi) * sd2[k2] * (1 - stats::pnorm((k[k2] - mode[k2])/sd2[k2])))
   return(f)
 }
