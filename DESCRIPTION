@@ -25,6 +25,7 @@ Suggests:
     shiny,
     RColorBrewer,
     colorspace,
-    zoo
+    zoo,
+    forecast
 LazyData: true
 RoxygenNote: 7.3.3
