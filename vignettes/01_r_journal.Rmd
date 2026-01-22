@@ -19,6 +19,6 @@ title: "R Journal Article"
 
 
 <div class="pdf-frame"> 
-<iframe src="https://journal.r-project.org/archive/2015-1/abel.pdf#toolbar=0">
+<iframe src="https://journal.r-project.org/articles/RJ-2015-002/RJ-2015-002.pdf#toolbar=0">
 </iframe>
 </div>

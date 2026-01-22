@@ -7,11 +7,11 @@ bibentry(bibtype = "Article",
   volume       = "7",
   number       = "2",
   pages        = "15--23",
-  url          = "https://journal.r-project.org/archive/2015-1/abel.pdf",
+  url          = "https://journal.r-project.org/articles/RJ-2015-002/RJ-2015-002.pdf",
 
   textVersion  =
   paste("Abel, Guy J. (2015).",
         "fanplot: An R Package for Visualising Sequential Distributions.",
         "The R Journal, 7(2), 15-23.",
-        "URL https://journal.r-project.org/archive/2015-1/abel.pdf")
+        "URL https://journal.r-project.org/articles/RJ-2015-002/RJ-2015-002.pdf")
 )

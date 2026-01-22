@@ -24,10 +24,11 @@ pkgdown::build_reference()
 
 usethis::use_spell_check()
 
-usethis::use_github_action("check_standard.yaml")
+usethis::use_github_action("check-standard.yaml", ref = "v4")
 usethis::use_github_action("pkgdown")
 usethis::use_github_actions_badge()
 usethis::use_github_actions_badge()
+usethis::use_github_action()
 
 usethis::use_git()
 usethis::use_github()

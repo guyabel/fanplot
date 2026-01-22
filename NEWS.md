@@ -1,6 +1,7 @@
 # fanplot 4.0.1
 
 * updated suggests for demo file, as required for CRAN
+* update citation info, including URL of R Journal article
 
 # fanplot 4.0.0
 
