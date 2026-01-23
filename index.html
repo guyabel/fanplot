@@ -11,14 +11,20 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" sizes="any" href="favicon.ico">
 <link rel="manifest" href="site.webmanifest">
-<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- mathjax math --><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script><script>
+  window.MathJax = {
+    chtml: {
+      fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
+    }
+  };
+</script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Visualisation of Sequential Probability Distributions Using Fan Charts">
 <meta name="description" content="Visualise sequential distributions using a range of plotting styles. Sequential distribution data can be input as either simulations or values corresponding to percentiles over time. Plots are added to existing graphic devices using the fan function. Users can choose from four different styles, including fan chart type plots, where a set of coloured polygon, with shadings corresponding to the percentile values are layered to represent different uncertainty levels. Full details in R Journal article; Abel (2015) &lt;doi:10.32614/RJ-2015-002&gt;.">
 <meta property="og:description" content="Visualise sequential distributions using a range of plotting styles. Sequential distribution data can be input as either simulations or values corresponding to percentiles over time. Plots are added to existing graphic devices using the fan function. Users can choose from four different styles, including fan chart type plots, where a set of coloured polygon, with shadings corresponding to the percentile values are layered to represent different uncertainty levels. Full details in R Journal article; Abel (2015) &lt;doi:10.32614/RJ-2015-002&gt;.">
-<meta property="og:image" content="https://guyabel.github.io/fanplot/logo.png">
+<meta property="og:image" content="http://guyabel.github.io/fanplot/logo.png">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-2XE3QBSNZJ"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -59,8 +65,8 @@
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/guyabel/fanplot/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://twitter.com/guyabelguyabel"><span class="fa fab fa-twitter fa-lg"></span></a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://guyabel.com"><span class="fa fas fa-home fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://twitter.com/guyabelguyabel" aria-label="Twitter"><span class="fa fab fa-twitter fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://guyabel.com" aria-label="Personal site"><span class="fa fas fa-home fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -77,7 +83,7 @@
 
 <!-- <img src='https://raw.githubusercontent.com/guyabel/fanplot/master/hex/logo_transp.png' align="right" height="180" style="padding-left: 20px; padding-bottom: 20px;" /> -->
 <p>Visualise sequential distributions using a range of plotting styles. Sequential distribution data can be input as either simulations or values corresponding to percentiles over time. Plots are added to existing graphic devices using the fan function. Users can choose from four different styles, including fan chart type plots, where a set of coloured polygon, with shadings corresponding to the percentile values are layered to represent different uncertainty levels.</p>
-<p>See the <a href="http://guyabel.github.io/fanplot/" class="external-link">pkgdown site</a> for full details.</p>
+<p>See the <a href="http://guyabel.github.io/fanplot/">pkgdown site</a> for full details.</p>
 <div class="section level2">
 <h2 id="ggplot">ggplot<a class="anchor" aria-label="anchor" href="#ggplot"></a>
 </h2>
@@ -98,7 +104,7 @@
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/" class="external-link">fanplot</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/">fanplot</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># empty plot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">945</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">*</span><span class="fl">0.85</span>, ylab <span class="op">=</span> <span class="st">"Volatility"</span><span class="op">)</span></span>

@@ -5,25 +5,28 @@
 The fanplot package is designed to help display uncertainty in estimates
 from time series models. To illustrate, the packages `th.mcmc` data
 frame object contains posterior density distributions of the estimated
-volatility of daily returns $y_{t}$ from the Pound/Dollar exchange rate
+volatility of daily returns \\y_t\\ from the Pound/Dollar exchange rate
 from 02/10/1981 to 28/6/1985. These distributions are from a MCMC
 simulation from a stochastic volatility model given in [Meyer and Yu
 (2002)](http://onlinelibrary.wiley.com/doi/10.1111/1368-423X.00046/abstract)
 where it assumed;
 
-$$y_{t}|\theta_{t} = \exp\left( \frac{1}{2}\theta_{t} \right)u_{t}\qquad u_{t} \sim N(0,1)\qquad t = 1,\ldots,n.$$
+\\ y_t \| \theta_t = \exp\left(\frac{1}{2}\theta_t\right)u_t \qquad u_t
+\sim N(0, 1) \qquad t=1,\ldots,n. \\
 
-The latent volatilities $\theta_{t}$, which are unknown states in a
+The latent volatilities \\\theta_t\\, which are unknown states in a
 state-space model terminology, are assumed to follow a Markovian
 transition over time given by the state equations:
 
-$$\theta_{t}|\theta_{t - 1},\mu,\phi,\tau^{2} = \mu + \phi\log\sigma_{t - 1}^{2} + v_{t}\qquad v_{t} \sim N\left( 0,\tau^{2} \right)\qquad t = 1,\ldots,n$$
+\\ \theta_t \| \theta\_{t-1}, \mu, \phi, \tau^2 = \mu + \phi \log
+\sigma^2\_{t-1} + v_t \qquad v_t \sim N(0, \tau^2) \qquad t=1,\ldots,n
+\\
 
-with $\theta_{0} \sim N\left( \mu,\tau^{2} \right)$.
+with \\\theta_0 \sim N(\mu, \tau^2)\\.
 
 The `th.mcmc` object consists of (1000) rows corresponding to MCMC
-simulations and (945) columns corresponding to each $t$. A fan chart of
-the evolution of the distribution of $\theta_{t}$ can be visualised
+simulations and (945) columns corresponding to each \\t\\. A fan chart
+of the evolution of the distribution of \\\theta_t\\ can be visualised
 using the fanplot package via,
 
 ``` r
@@ -37,7 +40,7 @@ fan(data = th.mcmc)
 
 ![](fanplot_files/figure-html/unnamed-chunk-1-1.png)
 
-The [`fan()`](https://guyabel.github.io/fanplot/reference/fan.md)
+The [`fan()`](http://guyabel.github.io/fanplot/reference/fan.md)
 function calculates the values of 100 equally spaced percentiles of each
 future distribution when the default `data.type = "simulations"` is set.
 This allows 50 fans to be plotted from the `heat.colours` colour
@@ -64,7 +67,7 @@ fan(data = th.mcmc, type = "interval", llab=TRUE, rcex=0.6)
 
 Contour lines are overlayed for the upper and lower bounds of each
 prediction intervals, as set using the `ln` command. A further line is
-plotted along the median of $\theta_{t}$, which is controlled by the
+plotted along the median of \\\theta_t\\, which is controlled by the
 `med.ln` argument (set to `TRUE` by default when `type="interval"`). The
 default labels on the right hand side correspond to the upper and lower
 bounds of each plotted line. The left labels are added by setting
@@ -98,7 +101,7 @@ Alternative labels are specified using the `rlab` and `llab` arguments.
 
 Spaghetti plots can be used to represent uncertainty shown by a range of
 possible future trajectories or past estimates. For example using the
-`th.mcmc` object, 20 random sets of $\theta_{t}$ can be plotted when
+`th.mcmc` object, 20 random sets of \\\theta_t\\ can be plotted when
 setting the argument `style = "spaghetti"`;
 
 ``` r

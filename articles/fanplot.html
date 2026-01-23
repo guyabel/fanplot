@@ -11,7 +11,13 @@
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- mathjax math --><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script><script>
+  window.MathJax = {
+    chtml: {
+      fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
+    }
+  };
+</script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
@@ -56,8 +62,8 @@
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/guyabel/fanplot/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://twitter.com/guyabelguyabel"><span class="fa fab fa-twitter fa-lg"></span></a></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://guyabel.com"><span class="fa fas fa-home fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://twitter.com/guyabelguyabel" aria-label="Twitter"><span class="fa fab fa-twitter fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://guyabel.com" aria-label="Personal site"><span class="fa fas fa-home fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -87,34 +93,30 @@ Abel</h4>
 <p>The fanplot package is designed to help display uncertainty in
 estimates from time series models. To illustrate, the packages
 <code>th.mcmc</code> data frame object contains posterior density
-distributions of the estimated volatility of daily returns
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mi>t</mi></msub><annotation encoding="application/x-tex">y_t</annotation></semantics></math>
-from the Pound/Dollar exchange rate from 02/10/1981 to 28/6/1985. These
-distributions are from a MCMC simulation from a stochastic volatility
-model given in
+distributions of the estimated volatility of daily returns <span class="math inline">\(y_t\)</span> from the Pound/Dollar exchange rate
+from 02/10/1981 to 28/6/1985. These distributions are from a MCMC
+simulation from a stochastic volatility model given in
 <a href="http://onlinelibrary.wiley.com/doi/10.1111/1368-423X.00046/abstract" class="external-link">Meyer
 and Yu (2002)</a> where it assumed;</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>θ</mi><mi>t</mi></msub><mo>=</mo><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>θ</mi><mi>t</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>u</mi><mi>t</mi></msub><mspace width="2.0em"></mspace><msub><mi>u</mi><mi>t</mi></msub><mo>∼</mo><mi>N</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mi>t</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
-y_t | \theta_t = \exp\left(\frac{1}{2}\theta_t\right)u_t \qquad u_t \sim N(0, 1) \qquad t=1,\ldots,n.
-</annotation></semantics></math></p>
-<p>The latent volatilities
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\theta_t</annotation></semantics></math>,
-which are unknown states in a state-space model terminology, are assumed
-to follow a Markovian transition over time given by the state
-equations:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mi>t</mi></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>θ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mi>μ</mi><mo>,</mo><mi>ϕ</mi><mo>,</mo><msup><mi>τ</mi><mn>2</mn></msup><mo>=</mo><mi>μ</mi><mo>+</mo><mi>ϕ</mi><mo>log</mo><msubsup><mi>σ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>+</mo><msub><mi>v</mi><mi>t</mi></msub><mspace width="2.0em"></mspace><msub><mi>v</mi><mi>t</mi></msub><mo>∼</mo><mi>N</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><msup><mi>τ</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="2.0em"></mspace><mi>t</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">
-\theta_t | \theta_{t-1}, \mu, \phi, \tau^2 = \mu + \phi \log \sigma^2_{t-1} + v_t \qquad v_t \sim N(0, \tau^2) \qquad t=1,\ldots,n 
-</annotation></semantics></math></p>
-<p>with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mn>0</mn></msub><mo>∼</mo><mi>N</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>μ</mi><mo>,</mo><msup><mi>τ</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\theta_0 \sim N(\mu, \tau^2)</annotation></semantics></math>.</p>
+<p><span class="math display">\[
+y_t | \theta_t = \exp\left(\frac{1}{2}\theta_t\right)u_t \qquad u_t \sim
+N(0, 1) \qquad t=1,\ldots,n.
+\]</span></p>
+<p>The latent volatilities <span class="math inline">\(\theta_t\)</span>, which are unknown states in a
+state-space model terminology, are assumed to follow a Markovian
+transition over time given by the state equations:</p>
+<p><span class="math display">\[
+\theta_t | \theta_{t-1}, \mu, \phi, \tau^2 = \mu + \phi \log
+\sigma^2_{t-1} + v_t \qquad v_t \sim N(0, \tau^2) \qquad t=1,\ldots,n
+\]</span></p>
+<p>with <span class="math inline">\(\theta_0 \sim N(\mu,
+\tau^2)\)</span>.</p>
 <p>The <code>th.mcmc</code> object consists of (1000) rows corresponding
-to MCMC simulations and (945) columns corresponding to each
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>.
-A fan chart of the evolution of the distribution of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\theta_t</annotation></semantics></math>
-can be visualised using the fanplot package via,</p>
+to MCMC simulations and (945) columns corresponding to each <span class="math inline">\(t\)</span>. A fan chart of the evolution of the
+distribution of <span class="math inline">\(\theta_t\)</span> can be
+visualised using the fanplot package via,</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/" class="external-link">fanplot</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://guyabel.github.io/fanplot/">fanplot</a></span><span class="op">)</span></span>
 <span><span class="co"># empty plot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, main<span class="op">=</span><span class="st">"Percentiles"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.5</span>, <span class="fl">1.5</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -147,19 +149,18 @@ for the 95th prediction interval.</p>
 <!-- <a href="http://gjabel.files.wordpress.com/2012/08/fanplot-sv2.png"><img class="aligncenter size-full wp-image-1231" src="http://gjabel.files.wordpress.com/2012/08/fanplot-sv2.png" alt="fanplot-sv2" width="640" height="640" /></a> -->
 <p>Contour lines are overlayed for the upper and lower bounds of each
 prediction intervals, as set using the <code>ln</code> command. A
-further line is plotted along the median of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\theta_t</annotation></semantics></math>,
-which is controlled by the <code>med.ln</code> argument (set to
-<code>TRUE</code> by default when <code>type="interval"</code>). The
-default labels on the right hand side correspond to the upper and lower
-bounds of each plotted line. The left labels are added by setting
-<code>llab = TRUE</code>. Note, some extra room is created for the
-labels by setting the <code>xlim = c(-20, 965)</code> argument of
-plotting area to a wider range than the original data (945
-observations). The text size of the right labels are controlled using
-the <code>rcex</code> argument. The left labels, by default, take the
-same text size as <code>rcex</code> although they can be separately
-controlled using the <code>lcex</code> argument.</p>
+further line is plotted along the median of <span class="math inline">\(\theta_t\)</span>, which is controlled by the
+<code>med.ln</code> argument (set to <code>TRUE</code> by default when
+<code>type="interval"</code>). The default labels on the right hand side
+correspond to the upper and lower bounds of each plotted line. The left
+labels are added by setting <code>llab = TRUE</code>. Note, some extra
+room is created for the labels by setting the
+<code>xlim = c(-20, 965)</code> argument of plotting area to a wider
+range than the original data (945 observations). The text size of the
+right labels are controlled using the <code>rcex</code> argument. The
+left labels, by default, take the same text size as <code>rcex</code>
+although they can be separately controlled using the <code>lcex</code>
+argument.</p>
 </div>
 <div class="section level2">
 <h2 id="alternative-colours">Alternative Colours<a class="anchor" aria-label="anchor" href="#alternative-colours"></a>
@@ -184,10 +185,8 @@ blue to white, via grey can be passed using;</p>
 </h2>
 <p>Spaghetti plots can be used to represent uncertainty shown by a range
 of possible future trajectories or past estimates. For example using the
-<code>th.mcmc</code> object, 20 random sets of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>θ</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\theta_t</annotation></semantics></math>
-can be plotted when setting the argument
-<code>style = "spaghetti"</code>;</p>
+<code>th.mcmc</code> object, 20 random sets of <span class="math inline">\(\theta_t\)</span> can be plotted when setting the
+argument <code>style = "spaghetti"</code>;</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># empty plot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, main<span class="op">=</span><span class="st">"Spaghetti Plot"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">20</span>, <span class="fl">965</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">th.mcmc</span><span class="op">)</span><span class="op">)</span></span>

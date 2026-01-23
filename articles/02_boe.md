@@ -30,17 +30,16 @@ parameters of a split-normal distribution that underlie their fan charts
 re-parametrised, two-piece normal distribution). The probability density
 of the split-normal distribution is given by Julio (2007) as
 
-$$f\left( x;\mu,\sigma_{1},\sigma_{2} \right) = \left\{ \begin{array}{l}
-{\frac{\sqrt{2}}{\sqrt{\pi}\left( \sigma_{1} + \sigma_{2} \right)}e^{- \frac{1}{2\sigma_{1}^{2}}{(x - \mu)}^{2}}\quad{\text{for}\mspace{6mu}} - \infty < x \leq \mu} \\
-{\frac{\sqrt{2}}{\sqrt{\pi}\left( \sigma_{1} + \sigma_{2} \right)}e^{- \frac{1}{2\sigma_{2}^{2}}{(x - \mu)}^{2}}\quad{\text{for}\mspace{6mu}}\mu < x < \infty} \\
+\\f(x; \mu, \sigma_1, \sigma_2) = \left\\\begin{array}{ll}\frac{\sqrt
+2}{\sqrt\pi (\sigma_1+\sigma_2)} e^{-\frac{1}{2\sigma_1^2}(x-\mu)^2}
+\quad \mbox{for } -\infty \< x \leq \mu \\\frac{\sqrt 2}{\sqrt\pi
+(\sigma_1+\sigma_2)} e^{-\frac{1}{2\sigma_2^2}(x-\mu)^2} \quad \mbox{for
+} \mu \< x \< \infty \\\end{array},\right.\\
 
-\end{array}, \right.$$
-
-where $\mu$ represents the mode parameter, and the two standard
-deviations $\sigma_{1}$ and $\sigma_{2}$ can be derived given the
-overall uncertainty parameter, $\sigma$ and skewness parameters,
-$\gamma$, as;
-$\sigma^{2} = \sigma_{1}^{2}(1 + \gamma) = \sigma_{2}^{2}(1 - \gamma).$
+where \\\mu\\ represents the mode parameter, and the two standard
+deviations \\\sigma_1\\ and \\\sigma_2\\ can be derived given the
+overall uncertainty parameter, \\\sigma\\ and skewness parameters,
+\\\gamma\\, as; \\\sigma^2=\sigma^2_1(1+\gamma)=\sigma^2_2(1-\gamma).\\
 The fanplot package contains functions for the density, distribution and
 quantile of a split normal distribution (`dsplitnorm`, `psplitnorm` and
 `qsplitnorm`) and a random generator function `rsplitnorm`
@@ -68,8 +67,8 @@ head(boe)
 
 The first column `time0` refers to the base year of forecast, the
 second, `time` indexes future projections, whilst the remaining three
-columns provide values for the corresponding projected mode ($\mu$),
-uncertainty ($\sigma$) and skew ($\gamma$) parameters: Users can
+columns provide values for the corresponding projected mode (\\\mu\\),
+uncertainty (\\\sigma\\) and skew (\\\gamma\\) parameters: Users can
 replicate past Bank of England fan charts for a particular period after
 creating a matrix object that contains values on the split-normal
 quantile function for a set of user defined probabilities. For example,

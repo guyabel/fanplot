@@ -1,38 +1,37 @@
 # Package index
 
-## Package overview
+## Getting Started
 
-- [`fanplot-package`](https://guyabel.github.io/fanplot/reference/fanplot-pacakge.md)
-  [`fanplot`](https://guyabel.github.io/fanplot/reference/fanplot-pacakge.md)
-  : Visualisation of Sequential Probability Distributions Using Fan
-  Charts.
+- [`fanplot`](http://guyabel.github.io/fanplot/reference/fanplot-package.md)
+  [`fanplot-package`](http://guyabel.github.io/fanplot/reference/fanplot-package.md)
+  : fanplot: Visualisation of Sequential Probability Distributions Using
+  Fan Charts
 
 ## Fan charts
 
-- [`fan()`](https://guyabel.github.io/fanplot/reference/fan.md)
-  [`fan0()`](https://guyabel.github.io/fanplot/reference/fan.md) : Fan
-  Plot of Distributions Percentiles Over Time.
+- [`fan()`](http://guyabel.github.io/fanplot/reference/fan.md) : Fan
+  Plot of Distribution Percentiles Over Time
 
 ## Split normal distribution
 
-- [`dsplitnorm()`](https://guyabel.github.io/fanplot/reference/dsplitnorm.md)
-  [`psplitnorm()`](https://guyabel.github.io/fanplot/reference/dsplitnorm.md)
-  [`qsplitnorm()`](https://guyabel.github.io/fanplot/reference/dsplitnorm.md)
-  [`rsplitnorm()`](https://guyabel.github.io/fanplot/reference/dsplitnorm.md)
-  : The Split Normal Distribution (or 2 Piece Normal Distribution).
+- [`dsplitnorm()`](http://guyabel.github.io/fanplot/reference/dsplitnorm.md)
+  [`psplitnorm()`](http://guyabel.github.io/fanplot/reference/dsplitnorm.md)
+  [`qsplitnorm()`](http://guyabel.github.io/fanplot/reference/dsplitnorm.md)
+  [`rsplitnorm()`](http://guyabel.github.io/fanplot/reference/dsplitnorm.md)
+  : The Split Normal Distribution (or Two-Piece Normal Distribution)
 
 ## Data
 
-- [`boe`](https://guyabel.github.io/fanplot/reference/boe.md) :
-  Parameters for MPC CPI Inflation Projections from Q1 2004 to Q4 2013.
-- [`cpi`](https://guyabel.github.io/fanplot/reference/cpi.md) :
+- [`boe`](http://guyabel.github.io/fanplot/reference/boe.md) :
+  Parameters for MPC CPI Inflation Projections from Q1 2004 to Q4 2013
+- [`cpi`](http://guyabel.github.io/fanplot/reference/cpi.md) :
   Percentage Change (over 12 months) of United Kingdom Consumer Price
   Inflation
-- [`ips`](https://guyabel.github.io/fanplot/reference/ips.md) : ONS
+- [`ips`](http://guyabel.github.io/fanplot/reference/ips.md) : ONS
   International Passenger Survey Long-Term International Migration
-  1975-2012
-- [`svpdx`](https://guyabel.github.io/fanplot/reference/svpdx.md) :
-  Pound-Dollar Exchange Rate Data
-- [`th.mcmc`](https://guyabel.github.io/fanplot/reference/th.mcmc.md) :
-  1000 MCMC Simulations of Estimated Volatility from Pound Dollar
-  Exchange Rate Data.
+  1975–2012
+- [`svpdx`](http://guyabel.github.io/fanplot/reference/svpdx.md) :
+  Pound–Dollar Exchange Rate Data
+- [`th.mcmc`](http://guyabel.github.io/fanplot/reference/th.mcmc.md) :
+  1000 MCMC Simulations of Estimated Volatility from Pound–Dollar
+  Exchange Rate Data
