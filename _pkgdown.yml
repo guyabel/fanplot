@@ -1,5 +1,7 @@
+url: http://guyabel.github.io/fanplot/
 template:
   bootstrap: 5
+  math-rendering: mathjax
   params:
     ganalytics: G-2XE3QBSNZJ
 navbar:
@@ -7,16 +9,18 @@ navbar:
     left:  [home, intro, reference, articles, tutorials, news]
     right: [github, twitter, personal-site]
   components:
-     twitter:
-       icon: "fab fa-twitter fa-lg"
-       href: https://twitter.com/guyabelguyabel
-     personal-site:
-       icon: "fas fa-home fa-lg"
-       href: https://guyabel.com
+    twitter:
+      icon: "fab fa-twitter fa-lg"
+      href: https://twitter.com/guyabelguyabel
+      aria-label: "Twitter"
+    personal-site:
+      icon: "fas fa-home fa-lg"
+      href: https://guyabel.com
+      aria-label: "Personal site"
 reference:
-- title: Package overview
+- title: "Getting Started"
 - contents:
-      - fanplot-package
+  - fanplot-package
 - title: "Fan charts"
 - contents:
   - fan
@@ -30,4 +34,3 @@ reference:
   - ips
   - svpdx
   - th.mcmc
-url: https://guyabel.github.io/fanplot/

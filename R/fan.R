@@ -1,3 +1,171 @@
+#' Fan Plot of Distribution Percentiles Over Time
+#'
+#' Visualise sequential distributions using a range of plotting styles.
+#'
+#' @param data Set of sequential simulation data, where rows represent simulation number
+#'   and columns represent some form of time index. If \code{data.type = "values"},
+#'   data must instead be a set of quantile values by rows for a set of probabilities
+#'   (which need to be provided in \code{probs}) and by column for some form of time index.
+#'   Data can take multiple classes, where the contents are converted to a \code{matrix}.
+#'   If the input is a \code{mts} or \code{zoo}, the time series properties will be inherited
+#'   (and \code{start} and \code{frequency} arguments will be ignored).
+#' @param data.type Indicates if \code{data} are sets of pre-calculated values for defined
+#'   probabilities (\code{"values"}) or simulated data (\code{"simulations"}). Default is \code{"simulations"}.
+#' @param style Plot style, choose from \code{"fan"} (default), \code{"spaghetti"}, \code{"boxplot"} or \code{"boxfan"}.
+#' @param type Type of percentiles to plot in \code{fan} or \code{boxfan}. Choose from \code{"percentile"} (default) or \code{"interval"}.
+#' @param probs Probabilities related to percentiles or prediction intervals to be plotted
+#'   (dependent on the \code{type} argument). Must be between 0 and 100 (inclusive) or 0 and 1.
+#'   Percentiles greater than 50 (or 0.5), if not given, are automatically calculated as 100 - \code{p},
+#'   to ensure symmetric fan. Defaults to single percentile values when \code{type = "percentile"}
+#'   and the 50th, 80th and 95th prediction interval when \code{type = "interval"}.
+#' @param start The time of the first distribution in \code{sims}. Similar to use in \code{\link{ts}}.
+#' @param frequency The number of distributions in \code{sims} per unit of time. Similar to use in \code{\link{ts}}.
+#' @param anchor Optional data value to anchor a forecast fan on. Typically the last observation of the observed series.
+#' @param anchor.time Optional time value for the anchor. Useful for irregular time series.
+#' @param fan.col Palette of colours used in the \code{fan} or \code{boxfan}.
+#' @param n.fan Number of colours to use in the fan.
+#' @param alpha Factor modifying the opacity alpha; typically in [0,1].
+#' @param ln Vector of numbers to plot contour lines on top of \code{fan} or \code{boxfan}.
+#'   Must correspond to calculated percentiles in \code{probs}.
+#' @param med.ln Logical; add a median line to fan. Useful if \code{type = "interval"}.
+#' @param ln.col Line colour imposed on top of the fan. Defaults to darkest colour from \code{fan.col},
+#'   unless \code{style = "spaghetti"}.
+#' @param med.col Median line colour. Defaults to first colour in \code{fan.col}.
+#' @param rlab Vector of labels at the end (right) of corresponding percentiles or prediction intervals.
+#' @param rpos Position of right labels. See \code{\link{text}}.
+#' @param roffset Offset of right labels. See \code{\link{text}}.
+#' @param rcex Text size of right labels. See \code{\link{text}}.
+#' @param rcol Colour of text for right labels. See \code{\link{text}}.
+#' @param llab Either logical (TRUE/FALSE) to plot labels at the start (left) of percentiles,
+#'   or a vector of percentiles. Only works for \code{fan} or \code{boxfan}.
+#' @param lpos Position of left labels. See \code{\link{text}}.
+#' @param loffset Offset of left labels. Defaults to \code{roffset}.
+#' @param lcex Text size of left labels. Defaults to \code{rcex}.
+#' @param lcol Colour of text for left labels. Defaults to \code{rcol}.
+#' @param upplab Prefix string for upper labels when \code{type = "interval"}.
+#' @param lowlab Prefix string for lower labels when \code{type = "interval"}.
+#' @param medlab Character string for median label.
+#' @param n.spag Number of simulations to plot in the \code{spaghetti} style.
+#' @param space Space between boxes in the \code{boxfan} plot.
+#' @param add Logical; add to active plot. Defaults to \code{FALSE} for \code{fan}, \code{TRUE} for \code{fan0}.
+#' @param ylim Passed to \code{plot} when \code{add = TRUE}.
+#' @param ... Additional arguments passed to \code{\link{boxplot}} for \code{fan} and to \code{\link{plot}} for \code{fan0}.
+#'
+#' @details
+#' Sequential distribution data can be input as either simulations or pre-computed values over time (columns).
+#' For the latter, declare input data as percentiles by setting \code{data.type = "values"}.
+#' Users can choose from four styles:
+#' \itemize{
+#'   \item \code{fan}, \code{boxfan}: shaded distributions with optional contour lines and labels.
+#'   \item \code{spaghetti}: random draws plotted along the sequence of distributions.
+#'   \item \code{boxplot}: box plots for simulated data at appropriate locations.
+#' }
+#'
+#' @return See details.
+#'
+#' @references
+#' Abel, G. J. (2015). fanplot: An R Package for visualising sequential distributions.
+#' \emph{The R Journal}, 7(2), 15--23.
+#'
+#' @author Guy J. Abel
+#'
+#' @examples
+#' ## Basic Fan: fan0()
+# fan0(th.mcmc)
+# 
+# ##
+# ## Basic Fan: fan()
+# ##
+# ### empty plot
+# plot(NULL, xlim = c(1, 945), ylim = range(th.mcmc)*0.85)
+# 
+# # add fan
+# fan(th.mcmc)
+#' 
+#' ##
+#' ## 20 or so examples of fan charts and
+#' ## spaghetti plots based on the th.mcmc object
+#' ##
+#' ## Make sure you have zoo, tsbugs, RColorBrewer and 
+#' ## colorspace packages installed
+#' ##
+#' \dontrun{
+#' demo("sv_fan", "fanplot")
+#' }
+#' 
+#' ##
+#' ## Fans for forecasted values
+#' ##
+#' \dontrun{
+#' #create time series
+#' net <- ts(ips$net, start=1975)
+#'   
+#' # fit model
+#' library("forecast")
+#'   m <- auto.arima(net)
+#'   
+#' # plot in forecast package (limited customisation possible)
+#' plot(forecast(m, h=5))
+#'   
+#' # another plot in forecast (with some customisation, no
+#' # labels or anchoring possible at the moment)
+#' plot(forecast(m, h=5, level=c(50,80,95)), 
+#'        shadecols=rev(heat.colors(3)))
+#'   
+#' # simulate future values
+#'   mm <- matrix(NA, nrow=1000, ncol=5)
+#'   for(i in 1:1000)
+#'     mm[i,] <- simulate(m, nsim=5)
+#'   
+#'   # interval fan chart
+#'   plot(net, xlim=c(1975,2020), ylim=c(-100,300))
+#'   fan(mm, type="interval", start=2013)
+#' 
+#'   # anchor fan chart
+#'   plot(net, xlim=c(1975,2020), ylim=c(-100,300))
+#'   fan(mm, type="interval", start=2013, 
+#'       anchor=net[time(net)==2012])
+#' 
+#'   # anchor spaghetti plot with underlying fan chart
+#'   plot(net, xlim=c(1975,2020), ylim=c(-100,300))
+#'   fan(mm, type="interval", start=2013, 
+#'       anchor=net[time(net)==2012], alpha=0, ln.col="orange")
+#'   fan(mm, type="interval", start=2013, 
+#'       anchor=net[time(net)==2012], alpha=0.5, style="spaghetti")
+#' }
+#' 
+#' ##
+#' ## Box Plots
+#' ##
+#' # sample every 21st day of theta_t
+#' th.mcmc21 <- th.mcmc[, seq(1, 945, 21)]
+#' plot(NULL, xlim = c(1, 945), ylim = range(th.mcmc21))
+#' fan(th.mcmc21, style = "boxplot", frequency = 1/21)
+#' 
+#' # additional arguments for boxplot
+#' plot(NULL, xlim = c(1, 945), ylim = range(th.mcmc21))
+#' fan(th.mcmc21, style = "boxplot", frequency = 1/21, 
+#'     outline = FALSE, col = "red", notch = TRUE)
+#' 
+#' ##
+#' ## Fan Boxes
+#' ##
+#' plot(NULL, xlim = c(1, 945), ylim = range(th.mcmc21))
+#' fan(th.mcmc21, style = "boxfan", type = "interval", frequency = 1/21)
+#' 
+#' # more space between boxes
+#' plot(NULL, xlim = c(1, 945), ylim = range(th.mcmc21))
+#' fan(th.mcmc21, style = "boxfan", type = "interval", 
+#'     frequency = 1/21, space = 10)
+#' 
+#' # overlay spaghetti
+#' fan(th.mcmc21, style = "spaghetti", 
+#'     frequency = 1/21, n.spag = 50, ln.col = "red", alpha=0.2) 
+#' 
+#'
+#' @aliases fan fan0
+#' @export
+
 fan <-
   function(data = NULL, data.type="simulations", style = "fan", type = "percentile",
            probs = if(type=="percentile") seq(0.01, 0.99, 0.01) else c(0.5, 0.8, 0.95), 
@@ -296,4 +464,33 @@ fan <-
     graphics::box()
   }
 
-
+fan0 <-
+  function(data = NULL, data.type = "simulations", style = "fan", type = "percentile",
+           probs = if(type=="percentile") seq(0.01, 0.99, 0.01) else c(0.5, 0.8, 0.95), 
+           start = 1, frequency = 1, anchor = NULL, anchor.time=NULL,
+           fan.col = grDevices::heat.colors, alpha = if (style == "spaghetti") 0.5 else 1, 
+           n.fan = NULL,
+           ln = NULL, ln.col = if(style=="spaghetti") "gray" else NULL, 
+           med.ln = if(type=="interval") TRUE else FALSE, med.col= "orange",
+           rlab = ln, rpos = 4, roffset = 0.1, rcex = 0.8, rcol = NULL, 
+           llab = FALSE, lpos = 2, loffset = roffset, lcex = rcex, lcol = rcol, 
+           upplab = "U", lowlab = "L", medlab=if(type == "interval") "M" else NULL,
+           n.spag = 30, 
+           space = if(style=="boxplot") 1/frequency else 0.9/frequency, 
+           add = TRUE, ylim = range(data)*0.8,...){
+    if(add==TRUE)
+      plot(data[,1], type="n", ylim=ylim, ...)
+    fan(data = data, data.type=data.type, style = style, type = type,
+        probs = probs, 
+        start = start, frequency = frequency, anchor = anchor, anchor.time=anchor.time,
+        fan.col = fan.col, alpha = alpha, 
+        n.fan = n.fan,
+        ln = ln, ln.col = ln.col, 
+        med.ln = med.ln, med.col= med.col,
+        rlab = rlab, rpos = rpos, roffset = roffset, rcex = rcex, rcol = rcol, 
+        llab = llab, lpos = lpos, loffset = loffset, lcex = lcex, lcol = lcol, 
+        upplab = upplab, lowlab = lowlab, medlab=medlab,
+        n.spag = n.spag, 
+        space = space, 
+        add = FALSE)
+  }

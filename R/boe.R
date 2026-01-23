@@ -1,0 +1,62 @@
+#' Parameters for MPC CPI Inflation Projections from Q1 2004 to Q4 2013
+#'
+#' Numerical parameters for inflation report of the Bank of England used to specify the probability distributions for forecast charts of CPI inflation.
+#' Data formatted from the November 2013 Bank of England Inflation Report.
+#'
+#' @docType data
+#' @usage data(boe)
+#'
+#' @format A data frame with 512 observations on the following 5 variables:
+#' \describe{
+#'   \item{time0}{Publication time of parameters}
+#'   \item{time}{Future time of projected parameter}
+#'   \item{mode}{Central location parameter of split-normal distribution}
+#'   \item{uncertainty}{Uncertainty parameter of split-normal distribution}
+#'   \item{skew}{Skew parameter of split-normal distribution}
+#' }
+#'
+#' @details
+#' \code{mode}, \code{uncertainty}, and \code{skew} parameters relate to those
+#' given in \code{\link{dsplitnorm}}, where uncertainty is the standard deviation.
+#'
+#' @source
+#' Bank of England Inflation Report November 2013. Retrieved from
+#' "Parameters for MPC CPI Inflation Projections from February 2004" spreadsheet.
+#' Original spreadsheet no longer available on the Bank of England website,
+#' but a copy exists at
+#' \url{https://github.com/guyabel/fanplot/tree/master/data-raw/}
+#'
+#' @examples
+#' ## Q1 2013
+#' y0 <- 2013
+#' boe0 <- subset(boe, time0 == y0)
+#' k <- nrow(boe0)
+#'
+#' # guess work to set percentiles the boe are plotting
+#' p <- seq(0.05, 0.95, 0.05)
+#' p <- c(0.01, p, 0.99)
+#'
+#' # estimate percentiles for future time period
+#' pp <- matrix(NA, nrow = length(p), ncol = k)
+#' for (i in 1:k)
+#'   pp[, i] <- qsplitnorm(p, mode = boe0$mode[i],
+#'                         sd = boe0$uncertainty[i],
+#'                         skew = boe0$skew[i])
+#' pp
+#'
+#' ## Q4 2013 (coarser fan)
+#' y0 <- 2013.75
+#' boe0 <- subset(boe, time0 == y0)
+#' k <- nrow(boe0)
+#'
+#' p <- seq(0.2, 0.8, 0.2)
+#' p <- c(0.05, p, 0.95)
+#' pp <- matrix(NA, nrow = length(p), ncol = k)
+#' for (i in 1:k)
+#'   pp[, i] <- qsplitnorm(p, mode = boe0$mode[i],
+#'                         sd = boe0$uncertainty[i],
+#'                         skew = boe0$skew[i])
+#' pp
+#'
+#' @keywords datasets
+"boe"

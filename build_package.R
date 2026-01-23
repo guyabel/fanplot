@@ -15,6 +15,8 @@ roxygen2::roxygenise()
 devtools::check(args = "--as-cran")
 devtools::check()
 devtools::build()
+usethis::use_data(th.mcmc, overwrite = TRUE)
+
 
 file.show("NEWS.md")
 
