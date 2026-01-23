@@ -1,0 +1,59 @@
+# fanplot
+
+Visualise sequential distributions using a range of plotting styles.
+Sequential distribution data can be input as either simulations or
+values corresponding to percentiles over time. Plots are added to
+existing graphic devices using the fan function. Users can choose from
+four different styles, including fan chart type plots, where a set of
+coloured polygon, with shadings corresponding to the percentile values
+are layered to represent different uncertainty levels.
+
+See the [pkgdown site](http://guyabel.github.io/fanplot/) for full
+details.
+
+## ggplot
+
+The plotting functions in fanplot was designed for working with graphics
+in base R. Jason Hilton has since developed the excellent
+[ggfan](https://github.com/jasonhilton/ggfan) package for creating fan
+charts in ggplot2.
+
+## Installation
+
+You can install the released version of fanplot from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("fanplot")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("guyabel/fanplot")
+```
+
+## Example
+
+``` r
+library(fanplot)
+
+# empty plot
+plot(NULL, xlim = c(1, 945), ylim = range(th.mcmc)*0.85, ylab = "Volatility")
+
+# add fan
+fan(th.mcmc)
+```
+
+![](https://raw.githubusercontent.com/guyabel/fanplot/master/README_files/figure-gfm/example-1.png)
+
+## Article
+
+Read more about the fanplot package in the *R Journal*
+[article](http://journal.r-project.org/archive/2015-1/abel.pdf)
+
+## Citation
+
+Abel, G. J. (2015). fanplot: An R package for visualising sequential
+distributions. *R Journal*, 7(1), 15–23.
