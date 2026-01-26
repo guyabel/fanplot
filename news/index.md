@@ -2,6 +2,8 @@
 
 ## fanplot 4.0.1
 
+CRAN release: 2026-01-23
+
 - update suggests for demo file, as required for CRAN
 - update citation info, including URL of R Journal article
 - switch to roxgen2 style documentation
